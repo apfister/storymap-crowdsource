@@ -144,6 +144,7 @@ export const CrowdsourceWebmapController = class CrowdsourceWebmapController ext
       if (url) {
         const clusterDefaults = {
           objectIdField,
+          useDefaultSymbol: true,
           disablePopup: true,
           distance: 80,
           id: 'crowdsourceClusters',

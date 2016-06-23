@@ -32,7 +32,7 @@ export const idField = function (state = 'FID', action) {
   }
 };
 
-export const primaryField = function (state = 'Name', action) {
+export const primaryField = function (state = 'NAME_ORG', action) {
   switch (action.type) {
     case 'UPDATE_SETTINGS_MAP_CROWDSOURCE_LAYER_PRIMARY_FIELD':
       return action.field;
@@ -41,7 +41,7 @@ export const primaryField = function (state = 'Name', action) {
   }
 };
 
-export const secondaryField = function (state = 'LocationName', action) {
+export const secondaryField = function (state = 'Location', action) {
   switch (action.type) {
     case 'UPDATE_SETTINGS_MAP_CROWDSOURCE_LAYER_SECONDARY_FIELD':
       return action.field;

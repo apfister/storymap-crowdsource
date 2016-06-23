@@ -4,6 +4,7 @@ import Helper from 'babel/utils/helper/Helper';
 import Input from 'babel/components/forms/input/Input';
 import Textarea from 'babel/components/forms/textarea/Textarea';
 import Location from 'babel/components/forms/location/Location';
+import Dropdown from 'babel/components/forms/dropdown/Dropdown';
 import Photo from 'babel/components/forms/photo/Photo';
 import TermsAndConditions from 'babel/components/forms/termsAndConditions/TermsAndConditions';
 import ViewerText from 'i18n!translations/viewer/nls/template';
@@ -183,6 +184,8 @@ export default class CrowdsourceForm extends React.Component {
           return <Textarea {...settings}></Textarea>;
         case 'location':
           return <Location map={this.props.map} {...settings}></Location>;
+        case 'dropdown':
+          return <Dropdown {...settings}></Dropdown>;  
         default:
           return <Input {...settings}></Input>;
         }
@@ -194,6 +197,17 @@ export default class CrowdsourceForm extends React.Component {
       const settings = $.extend(true,{},defaults,options);
 
       return <Photo {...settings}></Photo>;
+    } else if (field.type === 'dropdown') {
+      
+      console.log('field obj', field);
+      
+      const options = {
+        options: field.options
+      };
+      
+      const settings = $.extend(true,{},defaults,options);
+
+      return <Dropdown {...settings}></Dropdown>;
     }
   }
 

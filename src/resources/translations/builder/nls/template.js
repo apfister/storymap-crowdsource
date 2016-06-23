@@ -59,19 +59,24 @@ define({
     contribute: {
       defaultTitle: 'Add your contribution',
       defaultForm: {
-        name: {
-          label: 'Title',
-          attribute: 'title',
-          placeholder: 'Enter a title'
+        name_org: {
+          label: 'Name / Organization',
+          attribute: 'NAME_ORG',
+          placeholder: 'Enter your Name or Organization'
         },
-        description: {
-          label: 'Description',
-          attribute: 'description',
-          placeholder: 'Enter a description (200 words or fewer please)'
+        goal: {
+          label: 'Goal',
+          attribute: 'GOAL',
+          placeholder: 'Pick Your Goal'
+        },
+        why: {
+          label: 'Why?',
+          attribute: 'WHY',
+          placeholder: 'Enter a description (140 words or fewer please)'
         },
         location: {
           label: 'Location',
-          attribute: 'location',
+          attribute: 'LocationName',
           placeholder: 'Enter a location'
         },
         photo: {
@@ -100,7 +105,7 @@ define({
     },
     fromScratchMessage: {
       saving: 'Launching Crowdsource Builder',
-      layerNameInWebmap: 'Crowdsource Layer (DO NOT REMOVE)'
+      layerNameInWebmap: 'Points_CS_TakeAction'
     },
     help: {
       title: 'Help',

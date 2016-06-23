@@ -22,7 +22,7 @@ export default class SelectedShares extends React.Component {
     ]);
 
     const closeBtnClasses = Helper.classnames(['btn','btn-primary','btn-block','close-btn']);
-
+    
     return (
       <div className={mainClasses}>
         <div className="close-button-wrapper">
