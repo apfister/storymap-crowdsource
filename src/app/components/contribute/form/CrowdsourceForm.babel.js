@@ -4,6 +4,7 @@ import Helper from 'babel/utils/helper/Helper';
 import Input from 'babel/components/forms/input/Input';
 import Textarea from 'babel/components/forms/textarea/Textarea';
 import Location from 'babel/components/forms/location/Location';
+import RadioImageGroup from 'babel/components/forms/radioImageGroup/RadioImageGroup';
 import Photo from 'babel/components/forms/photo/Photo';
 import TermsAndConditions from 'babel/components/forms/termsAndConditions/TermsAndConditions';
 import ViewerText from 'i18n!translations/viewer/nls/template';
@@ -56,7 +57,7 @@ export default class CrowdsourceForm extends React.Component {
     const closeBtnClasses = Helper.classnames(['btn','btn-primary','btn-block','close-btn']);
 
     return (
-      <div className="row">
+      <div className="row ratio-padder">
         <div className="close-button-wrapper">
           <button type="button" className="close" aria-label="Close" onClick={this.onClose}>
             <span aria-hidden="true" dangerouslySetInnerHTML={{__html: '&times;'}}></span>
@@ -193,7 +194,20 @@ export default class CrowdsourceForm extends React.Component {
 
       const settings = $.extend(true,{},defaults,options);
 
+      settings.validations = [];
+
       return <Photo {...settings}></Photo>;
+    } else if (field.type === 'radio-image-group') {
+      
+      const options = {
+        options: field.options
+      };
+
+      const settings = $.extend(true,{},defaults,options);
+
+      settings.validations = [];
+
+      return <RadioImageGroup {...settings}></RadioImageGroup>;
     }
   }
 

@@ -2,30 +2,11 @@ import builderText from 'i18n!translations/builder/nls/template';
 
 export const featureServiceDefaults = {
   basic: {
-    fieldSettings: [{
-      required: true,
-      type: 'photo',
-      fieldID: 'PrimaryPhoto',
-      label: builderText.contribute.defaultForm.photo.label,
-      placeholder: builderText.contribute.defaultForm.photo.placeholder,
-      attributeName: builderText.contribute.defaultForm.photo.attribute,
-      validations: ['required'],
-      isAttachment: true,
-      extras: {
-        dataType: 'photo',
-        photoSettings: [{
-          name: 'PrimaryPhoto',
-          smallestSide: 1000
-        },{
-          name: 'PrimaryThumbnail',
-          height: 200,
-          width: 200
-        }]
-      }
-    },{
+    fieldSettings: [
+    {
       required: true,
       type: 'text',
-      fieldID: 'Name',
+      fieldID: 'NAME',
       label: builderText.contribute.defaultForm.name.label,
       attributeName: builderText.contribute.defaultForm.name.attribute,
       placeholder: builderText.contribute.defaultForm.name.placeholder,
@@ -33,7 +14,7 @@ export const featureServiceDefaults = {
     },{
       required: true,
       type: 'location',
-      fieldID: 'LocationName',
+      fieldID: 'LOCATION_NAME',
       label: builderText.contribute.defaultForm.location.label,
       attributeName: builderText.contribute.defaultForm.location.attribute,
       placeholder: builderText.contribute.defaultForm.location.placeholder,
@@ -44,12 +25,16 @@ export const featureServiceDefaults = {
       }
     },{
       required: true,
-      type: 'textarea',
-      fieldID: 'Description',
-      label: builderText.contribute.defaultForm.description.label,
-      attributeName: builderText.contribute.defaultForm.description.attribute,
-      placeholder: builderText.contribute.defaultForm.description.placeholder,
-      validations: ['required','arcgisSupportedHtml']
+      type: 'radio-group',
+      fieldID: 'NATL_POL_LEADER_PRIME_MINISTER',
+      label: builderText.contribute.defaultForm.natl_pm.label,
+      attributeName: builderText.contribute.defaultForm.natl_pm.attribute,
+      placeholder: builderText.contribute.defaultForm.natl_pm.placeholder,
+      validations: ['required'],
+      options: [
+        { value: 'Male' },
+        { value: 'Female' }
+      ]
     }]
   }
 };

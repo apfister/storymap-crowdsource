@@ -169,7 +169,7 @@ const defaultLayerDefinition = {
       defaultValue: null
     },
 		{
-			name: 'Name',
+			name: 'NAME',
 			type: 'esriFieldTypeString',
 			alias: 'Name',
 			domain: null,
@@ -177,17 +177,17 @@ const defaultLayerDefinition = {
 			nullable: true,
 			length: 256
 		},
+    {
+      name: 'NATL_POL_LEADER_PRIME_MINISTER',
+      type: 'esriFieldTypeString',
+      alias: 'National Leadership - Prime Minister or President',
+      domain: null,
+      editable: true,
+      nullable: true,
+      length: 256
+    },
 		{
-			name: 'Description',
-			type: 'esriFieldTypeString',
-			alias: 'Description',
-			domain: null,
-			editable: true,
-			nullable: true,
-			length: 1500
-		},
-		{
-			name: 'LocationName',
+			name: 'LOCATION_NAME',
 			type: 'esriFieldTypeString',
 			alias: 'Location Name',
 			domain: null,

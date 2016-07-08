@@ -60,24 +60,19 @@ define({
       defaultTitle: 'Add your contribution',
       defaultForm: {
         name: {
-          label: 'Title',
-          attribute: 'title',
-          placeholder: 'Enter a title'
-        },
-        description: {
-          label: 'Description',
-          attribute: 'description',
-          placeholder: 'Enter a description (200 words or fewer please)'
+          label: 'Name',
+          attribute: 'NAME',
+          placeholder: 'Your Name'
         },
         location: {
           label: 'Location',
-          attribute: 'location',
+          attribute: 'LOCATION_NAME',
           placeholder: 'Enter a location'
         },
-        photo: {
-          label: 'Photo',
-          placeholder: 'Drag and Drop',
-          attribute: 'photo'
+        natl_pm: {
+          label: 'Your Prime Minister',
+          placeholder: '',
+          attribute: 'NATL_POL_LEADER_PRIME_MINISTER'
         },
         termsAndConditions: {
           legal: 'You warrant and represent that (1) you possess all rights, title, and ownership in the photos to be shared up to this site, and grant Esri, and its contractors the nonexclusive, royalty free right to use, copy, store, cache, host, prepare derivative works, reproduce, publicly display and perform, redistribute, rebroadcast, and retransmit the shared photo as part of this service, and (2) your sharing of photos and any associated geolocational information will not infringe or misappropriate any third party’s proprietary rights or rights of privacy or publicity. Sharing photos that could be deemed defamatory, obscene, pornographic, excessively violent, or to encourage unlawful activities are strictly prohibited.'

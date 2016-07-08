@@ -2,6 +2,7 @@ import React from 'react';
 import Helper from 'babel/utils/helper/Helper';
 import Login from './login/Login';
 import CrowdsourceForm from './form/CrowdsourceForm';
+import MaleFemaleRatio from './form/MaleFemaleRatio';
 
 export default class ContributePanel extends React.Component {
 
@@ -19,7 +20,7 @@ export default class ContributePanel extends React.Component {
     return (
       <div className={contributeClasses}>
         { !this.props.user.authenticated || this.props.view === 'login' ? <Login {...this.props}/> : null }
-        { this.props.user.authenticated && this.props.user.contributor && this.props.view === 'form' ? <CrowdsourceForm {...this.props}/> : null }
+        { this.props.user.authenticated && this.props.user.contributor && this.props.view === 'form' ? <div><MaleFemaleRatio {...this.props}/> <CrowdsourceForm {...this.props}/></div> : null }
       </div>
     );
   }

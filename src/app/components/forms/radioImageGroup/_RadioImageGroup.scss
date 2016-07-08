@@ -1,0 +1,62 @@
+.radio-image-group {
+
+  .radio {
+    margin-top: 0;
+  }
+
+  &.has-error .radio {
+    color: inherit;
+  }
+
+  &.required .radio label::after {
+    content: none;
+  }
+
+  label {
+    /*text-align: center;*/
+  }
+
+  label span {
+    vertical-align: top;
+  }
+
+  input {
+    visibility: hidden; 
+    position: absolute;   
+  }
+
+  label > input + i.fa {
+    cursor:pointer;
+  }
+
+  label > input:checked + i.fa-male {
+    color: #0079c1;
+  }
+
+  label > input:checked + i.fa-female {
+    color: #d81b60;
+  }
+
+  label > input:checked + i.fa-user {
+    color: #ff9800;
+  }
+  
+  /*label > input:hover + i.fa {
+    text-shadow: #196fa6 0px 4px 4px;
+  }*/
+
+  .holder {
+    padding: 0px 100px 0px 50px;
+    display: flex;
+    justify-content: space-around;
+  }
+
+  .fa-7x {
+    font-size: 7em;
+  }
+
+  .radio-image-label {
+    margin-top: 10px;
+    font-size: 14px;
+  }
+}

@@ -1,0 +1,109 @@
+.ratio-holder {
+  /*width: 442.75px;*/
+}
+
+.ratio-col {
+  padding: 0;
+  background: white;
+}
+
+.spacer {
+  /*width: 190px;*/
+  position: absolute;
+  bottom: 0;
+  border-top: 1px solid black;
+}
+
+.background {
+  display: flex;
+  /*height: 180px;*/
+  background-color: rgb(255, 255, 255);
+  /*width: 360px;*/
+  padding: 5px;
+  /*border-bottom: 1px solid black;*/
+  padding-bottom: 10px;
+}
+
+.left-side {
+  /*background: blue;*/
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  width: 50%; 
+}
+.right-side {
+  /*background: pink;*/
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  width: 50%; 
+}
+.man {
+  position: relative;
+  margin-top: auto;
+  color: #0079c1;
+}
+.woman {
+  position: relative;
+  margin-top: auto;
+  color: #d81b60;
+}
+.man, .woman {
+  font-size: 3em;
+  text-align: center;
+}
+.ratio-title {
+  text-align: center;
+  margin-top: 5px;
+}
+.ratio-row {
+  position: fixed;
+  z-index: 50;
+  margin-top: -15px;
+  margin-left: -13px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.38);
+  -webkit-box-shadow: 2px 3px 18px -2px rgba(0,0,0,0.75);
+  -moz-box-shadow: 2px 3px 18px -2px rgba(0,0,0,0.75);
+  box-shadow: 2px 3px 18px -2px rgba(0,0,0,0.75);
+}
+.ratio-padder {
+  padding-top: 360px;
+}
+.ratio {
+  padding: 5px 5px;
+  display: flex;
+  /*height: 50px;*/
+  /*width: 360px;*/
+  background: white;
+  position: relative;
+}
+.ratio:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 10%;
+  height: 1px;
+  width: 80%;
+  border-bottom: 1px solid black;
+}
+.ratio .male, .female {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+}
+.ratio label {
+  font-size: 55px;
+}
+.ratio .female label {
+  text-align: right;
+  margin-right: 10px;
+}
+.ratio .male label {
+  text-align: left;
+  margin-left: 10px;
+}
+.ratio .sep {
+  font-size: 45px;
+  opacity: .65;
+  color: #000;
+}
