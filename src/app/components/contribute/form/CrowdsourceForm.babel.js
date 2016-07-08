@@ -226,9 +226,11 @@ export default class CrowdsourceForm extends React.Component {
     this.formItemStatus[item] = valid;
 
     Object.keys(this.formItemStatus).forEach((current) => {
-      if (!this.formItemStatus[current]) {
-        formValid = false;
-      }
+      if (current !== 'LOCAL_COMM_SPORTS_COACH' && current !== 'LOCAL_COMM_RELIGIOUS_SPIRITUAL_LEADER') {
+        if (!this.formItemStatus[current]) {
+          formValid = false;
+        }
+      }      
     });
 
     this.handleFormChange(formValid);
