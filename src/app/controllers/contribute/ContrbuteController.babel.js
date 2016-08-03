@@ -113,6 +113,35 @@ export default class ContributeController {
 
       };
 
+      const w = 540;
+
+      const h = 540;
+
+      const div = $('#exporter');
+
+      let testcanvas = document.createElement('canvas');
+
+      testcanvas.width = w*2;
+      testcanvas.height = h*2;
+      testcanvas.style.width = w + 'px';
+      testcanvas.style.height = h + 'px';
+
+      let context = testcanvas.getContext('2d');
+
+      context.scale(2,2);
+
+      html2canvas(div, {
+        // canvas: testcanvas,
+        onrendered: function(canvas) {
+          // do what you want
+          // Canvas2Image.saveAsPNG(canvas, 330, 250);
+          var img = canvas.toDataURL("image/png");
+          download(img, "ratio", "image/png");
+        },
+        width: 360,
+        height: 250
+     });
+
       Object.keys(graphic.attributes).forEach((key) => {
         const value = graphic.attributes[key];
 

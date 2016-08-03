@@ -113,6 +113,9 @@
 		}
 	</style>
 
+  <script src="/lib/male-female-scripts/html2canvas0.5.0-alpha1.min.js"></script>
+  <script src="/lib/male-female-scripts/download2.js"></script>
+
   <script type="text/javascript">
     var app = {
       version: '{{ versionStr }}',
