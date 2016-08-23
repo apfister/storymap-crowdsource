@@ -82,28 +82,30 @@ export default class MaleFemaleRatio extends React.Component {
 
   render() {
     return (
-      <div id="exporter" className="row ratio-row">
+      <div className="row ratio-row">
         <div className="col-xs-12 ratio-col">
           <div className="ratio-holder">
             <h3 className="ratio-title">View Your Ratio</h3>
-            <div className="background">
-              <div className="left-side">
-                <i className="fa fa-female woman" aria-hidden="true"></i>
-              </div>
-              <div className="right-side">
-                <i className="fa fa-male man" aria-hidden="true"></i>
-              </div>
-            </div>
 
-            <div className="ratio">
-              <div className="female">
-                <label>0</label>
+            <div id="toExport">
+              <div className="background">
+                <div className="left-side">
+                  <i className="fa fa-female woman" aria-hidden="true"></i>
+                </div>
+                <div className="right-side">
+                  <i className="fa fa-male man" aria-hidden="true"></i>
+                </div>
               </div>
-              <div className="sep">
-                :
-              </div>
-              <div className="male">
-                <label>0</label>
+              <div className="ratio">
+                <div className="female">
+                  <label>0</label>
+                </div>
+                <div className="sep">
+                  :
+                </div>
+                <div className="male">
+                  <label>0</label>
+                </div>
               </div>
             </div>
 

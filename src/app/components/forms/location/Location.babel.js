@@ -46,7 +46,11 @@ export default class Location extends FormGroup {
       highlightLocation: true,
       minCharacters: 1,
       map: this.props.map,
-      theme: 'calcite-geocoder'
+      theme: 'calcite-geocoder',
+      arcgisGeocoder: {
+        // categories: ['City', 'Subregion', 'Region', 'Country']
+        categories: ['Populated Place']
+      }
     },this.geocoderContainer[0]);
 
     this.locateButton = new LocateButton({
@@ -115,6 +119,7 @@ export default class Location extends FormGroup {
       'has-error': !this.state.isValid
     }]);
 
+    // NO LOCATE button
     return (
       <div className={inputClasses}>
         <label htmlFor={this.props.id} className="control-label">{this.props.label}</label>
@@ -123,13 +128,27 @@ export default class Location extends FormGroup {
           className="geocoder"
           ref={(ref) => this.geocoderContainer = ref}>
         </div>
-        <div
-          className="locator"
-          ref={(ref) => this.locatorContainer = ref}>
-        </div>
         {this.getErrorMessage ? this.getErrorMessage() : null}
       </div>
     );
+
+    // ORIGINAL
+
+    // return (
+    //   <div className={inputClasses}>
+    //     <label htmlFor={this.props.id} className="control-label">{this.props.label}</label>
+    //     {this.props.tooltip ? <IconTooltip className="form-tooltip" {...this.props.tooltip} /> : null}
+    //     <div
+    //       className="geocoder"
+    //       ref={(ref) => this.geocoderContainer = ref}>
+    //     </div>
+    //     <div
+    //       className="locator"
+    //       ref={(ref) => this.locatorContainer = ref}>
+    //     </div>
+    //     {this.getErrorMessage ? this.getErrorMessage() : null}
+    //   </div>
+    // );
   }
 
   addInputAttributes() {

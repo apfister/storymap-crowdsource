@@ -113,34 +113,93 @@ export default class ContributeController {
 
       };
 
-      const w = 540;
+      const generateRatioThumbnail = function () {
+        const dfd = new Deferred();
 
-      const h = 540;
+        var div = $('#toExport');
 
-      const div = $('#exporter');
+        var w = div.width();
 
-      let testcanvas = document.createElement('canvas');
+        var h = div.height();
 
-      testcanvas.width = w*2;
-      testcanvas.height = h*2;
-      testcanvas.style.width = w + 'px';
-      testcanvas.style.height = h + 'px';
+        html2canvas(div, {
+          width: w,
+          height: h,
+          onrendered: function(canvas) {
+            canvas.toBlob(function (blob) {
 
-      let context = testcanvas.getContext('2d');
+              attachments.push({
+                field: 'PrimaryThumbnail',
+                filename: 'PrimaryThumbnail.png',
+                attachment: blob,
+                url: false
+              });
 
-      context.scale(2,2);
+              dfd.resolve();
 
-      html2canvas(div, {
-        // canvas: testcanvas,
-        onrendered: function(canvas) {
-          // do what you want
-          // Canvas2Image.saveAsPNG(canvas, 330, 250);
-          var img = canvas.toDataURL("image/png");
-          download(img, "ratio", "image/png");
-        },
-        width: 360,
-        height: 250
-     });
+            }, 'image/png');
+
+          }
+        });
+
+        return dfd;
+      };
+
+      const generateRatioImage = function () {
+        const dfd = new Deferred();
+
+        var div = $('#toExport');
+
+        var w = div.width();
+
+        var h = div.height();
+
+        var testcanvas = document.createElement('canvas');
+
+        testcanvas.width = w*2;
+        testcanvas.height = h*2;
+        testcanvas.style.width = w + 'px';
+        testcanvas.style.height = h + 'px';
+
+        var context = testcanvas.getContext('2d');
+
+        // this was for the first way exporting to try and calculate the new X,Y origins for scaling up the image
+        // var newX = Math.round( (div.position().left + parseInt(div.css('marginLeft')) )*2 ) * -1;
+        //not really sure why this constant seems to hold true
+        // var newY = -260;
+        //console.log(newX, newY);
+
+        var newX = -1577;
+        var newY = -353;
+        context.translate(newX, newY);
+        context.scale(2,2);
+
+        html2canvas(div, {
+          canvas: testcanvas,
+          width: w,
+          height: h,
+          onrendered: function(canvas) {
+
+            // var img = canvas.toDataURL("image/png");
+            canvas.toBlob(function (blob) {
+
+              attachments.push({
+                field: 'PrimaryPhoto',
+                filename: 'PrimaryPhoto.png',
+                attachment: blob,
+                url: false
+              });
+
+              dfd.resolve();
+
+            }, 'image/png');
+
+            // download(img, "ratio", "image/png");
+          }
+        });
+
+        return dfd;
+      };
 
       Object.keys(graphic.attributes).forEach((key) => {
         const value = graphic.attributes[key];
@@ -185,11 +244,27 @@ export default class ContributeController {
           const oid = res.addResults[0].objectId;
 
           MapActions.selectFeatures(oid);
-          uploadAttachments(oid).then(this.finishSave,(err) => {
-            _onError(err);
-            this.hideUncompleted(oid);
-            this.displayContributeErrorMessage();
+
+          generateRatioThumbnail().then( () => {
+
+            generateRatioImage().then( () => {
+
+              uploadAttachments(oid).then(this.finishSave,(err) => {
+                _onError(err);
+                this.hideUncompleted(oid);
+                this.displayContributeErrorMessage();
+              });
+
+            });
+
           });
+
+          // uploadAttachments(oid).then(this.finishSave,(err) => {
+          //   _onError(err);
+          //   this.hideUncompleted(oid);
+          //   this.displayContributeErrorMessage();
+          // });
+
         }
       },(err) => {
         // TODO Handle errors in crowdsource form

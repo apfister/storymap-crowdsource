@@ -5,7 +5,10 @@ import Input from 'babel/components/forms/input/Input';
 import Textarea from 'babel/components/forms/textarea/Textarea';
 import Location from 'babel/components/forms/location/Location';
 import RadioImageGroup from 'babel/components/forms/radioImageGroup/RadioImageGroup';
+import SubmitterTypeRadioGroup from 'babel/components/forms/submitterTypeRadioGroup/SubmitterTypeRadioGroup';
+import SubmitterTypeInput from 'babel/components/forms/submitterTypeInput/SubmitterTypeInput';
 import Photo from 'babel/components/forms/photo/Photo';
+import Select from 'babel/components/forms/select/Select';
 import TermsAndConditions from 'babel/components/forms/termsAndConditions/TermsAndConditions';
 import ViewerText from 'i18n!translations/viewer/nls/template';
 import 'bootstrap/transition';
@@ -116,6 +119,11 @@ export default class CrowdsourceForm extends React.Component {
 
   getFormField(field,index) {
 
+    // skip showing the actual Photo picker. don't need it
+    if (field.type === 'photo') {
+      return '';
+    }
+
     const self = this;
 
     if (this.formItemStatus[field.fieldID] === undefined) {
@@ -167,7 +175,7 @@ export default class CrowdsourceForm extends React.Component {
       }
     };
 
-    if (field.type === 'text' || field.type === 'textarea' || field.type === 'location') {
+    if (field.type === 'text' || field.type === 'textarea' || field.type === 'location' || field.type === 'select') {
       const maxLength = this.getFieldDefinitionValue(field.fieldID,'length');
       const options = {
         inputAttr: {
@@ -184,6 +192,10 @@ export default class CrowdsourceForm extends React.Component {
           return <Textarea {...settings}></Textarea>;
         case 'location':
           return <Location map={this.props.map} {...settings}></Location>;
+        case 'select':
+          settings.options = field.options || [];
+
+          return <Select {...settings}></Select>;
         default:
           return <Input {...settings}></Input>;
         }
@@ -198,7 +210,7 @@ export default class CrowdsourceForm extends React.Component {
 
       return <Photo {...settings}></Photo>;
     } else if (field.type === 'radio-image-group') {
-      
+
       const options = {
         options: field.options
       };
@@ -208,6 +220,41 @@ export default class CrowdsourceForm extends React.Component {
       settings.validations = [];
 
       return <RadioImageGroup {...settings}></RadioImageGroup>;
+    } else if (field.type === 'submitter-type-radio-group') {
+      const options = {
+        options: field.options
+      };
+
+      const settings = $.extend(true,{},defaults,options);
+
+      settings.validations = [];
+
+      options.options.forEach(function (opt) {
+        if (opt.withNumber) {
+          let newDefaults = $.extend(true, {}, defaults, opt.withNumberSettings);
+          newDefaults.id = opt.withNumberSettings.fieldID;
+          newDefaults.attribute = opt.withNumberSettings.attributeName;
+          delete newDefaults.label;
+          newDefaults.inputAttr = { 
+            placeholder: opt.withNumberSettings.placeholder || '', 
+            disabled: 'disabled'
+          };
+          opt.withNumberSettings = newDefaults;
+          // opt.withNumberSettings = $.extend(true, {}, newDefaults, opt.withNumberSettings);
+        }
+      }, this);
+
+      return <SubmitterTypeRadioGroup {...settings}></SubmitterTypeRadioGroup>;
+    } else if (field.type === 'submitter-type-input') {
+      const options = {
+        options: field.options
+      };
+
+      const settings = $.extend(true,{},defaults,options);
+
+      settings.validations = [];
+
+      return <SubmitterTypeInput {...settings}></SubmitterTypeInput>;
     }
   }
 
@@ -226,11 +273,14 @@ export default class CrowdsourceForm extends React.Component {
     this.formItemStatus[item] = valid;
 
     Object.keys(this.formItemStatus).forEach((current) => {
-      if (current !== 'LOCAL_COMM_SPORTS_COACH' && current !== 'LOCAL_COMM_RELIGIOUS_SPIRITUAL_LEADER') {
+      if (current !== 'LOCAL_COMM_SPORTS_COACH' && 
+          current !== 'LOCAL_COMM_RELIGIOUS_SPIRITUAL_LEADER' && 
+          current !== 'NUMBER_IN_GROUP') {
+
         if (!this.formItemStatus[current]) {
           formValid = false;
         }
-      }      
+      }
     });
 
     this.handleFormChange(formValid);
