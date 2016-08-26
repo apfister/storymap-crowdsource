@@ -30,16 +30,23 @@
   }
 
   label > input:checked + i.fa-male {
-    color: #0079c1;
+    /*color: #0079c1;*/
+    color: #f49600;
   }
 
   label > input:checked + i.fa-female {
-    color: #d81b60;
+    /*color: #d81b60;*/
+    color: #f49600;
   }
 
   label > input:checked + i.fa-user {
     color: #ff9800;
   }
+
+  label > input:checked + i.fa-circle {
+    color: #ffa500;
+  }
+  
   
   /*label > input:hover + i.fa {
     text-shadow: #196fa6 0px 4px 4px;
@@ -58,5 +65,6 @@
   .radio-image-label {
     margin-top: 10px;
     font-size: 14px;
+    text-align: center;
   }
 }

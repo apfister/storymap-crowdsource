@@ -95,6 +95,19 @@ export const ThumbnailGallery = class ThumbnailGallery extends React.Component {
       selected: this.props.selected.indexOf(attr[this.props.idField]) >= 0
     }]);
 
+    // return (
+    //   <li className={itemClasses}
+    //     key={attr[this.props.idField]}
+    //     style={itemStyle}
+    //     onClick={this.onSelect.bind(null,attr[this.props.idField])}>
+    //     <LazyImage className="background-image" src={photoUrl}></LazyImage>
+    //     <div className="info-card background-fill">
+    //       <h6>{attr[this.props.primaryField]}</h6>
+    //       <p>{attr[this.props.secondaryField]}</p>
+    //     </div>
+    //   </li>
+    // );
+    
     return (
       <li className={itemClasses}
         key={attr[this.props.idField]}
@@ -102,8 +115,7 @@ export const ThumbnailGallery = class ThumbnailGallery extends React.Component {
         onClick={this.onSelect.bind(null,attr[this.props.idField])}>
         <LazyImage className="background-image" src={photoUrl}></LazyImage>
         <div className="info-card background-fill">
-          <h6>{attr[this.props.primaryField]}</h6>
-          <p>{attr[this.props.secondaryField]}</p>
+          <p>{attr[this.props.primaryField]}</p>
         </div>
       </li>
     );

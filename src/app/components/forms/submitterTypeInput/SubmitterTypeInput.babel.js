@@ -35,11 +35,3 @@ export default class SubmitterTypeInput extends FormGroup {
 
   }
 }
-
-$.extend(true,SubmitterTypeInput.propTypes,{
-  options: React.PropTypes.array
-});
-
-$.extend(true,SubmitterTypeInput.defaultProps,{
-  options: []
-});

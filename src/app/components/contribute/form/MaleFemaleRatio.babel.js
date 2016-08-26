@@ -36,6 +36,11 @@ export default class MaleFemaleRatio extends React.Component {
     $('.ratio-holder').outerWidth( $('.contribute-panel').outerWidth() );
 
     window.ratioKeeper = {};
+    
+    window.maleRatio = 0;
+    
+    window.femaleRatio = 0;
+
     window.doRatioUpdate = function () {
       let counter = 0, female = 0, male = 0;
 
@@ -57,6 +62,9 @@ export default class MaleFemaleRatio extends React.Component {
 
       $('.ratio .male label').text(maleRatio);
       $('.ratio .female label').text(femaleRatio);
+
+      window.maleRatio = maleRatio;
+      window.femaleRatio = femaleRatio;
 
       // do some math to adjust for scale 3 - 15
       // found a sample using this method for using custom slide ranges @ https://github.com/tovic/simple-custom-range-slider#examples

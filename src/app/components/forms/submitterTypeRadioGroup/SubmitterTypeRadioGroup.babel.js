@@ -3,7 +3,6 @@ import React from 'react'; // eslint-disable-line no-unused-vars
 import Helper from 'babel/utils/helper/Helper';
 import IconTooltip from 'babel/components/helper/tooltip/IconTooltip';
 import FormGroup from 'babel/components/forms/base/FormGroup';
-import SubmitterTypeInput from 'babel/components/forms/submitterTypeInput/SubmitterTypeInput';
 import 'babel/utils/helper/strings/StringUtils';
 
 export default class SubmitterTypeRadioGroup extends FormGroup {
@@ -73,7 +72,7 @@ export default class SubmitterTypeRadioGroup extends FormGroup {
                     onBlur={this.onBlur} />
                   {current.label || current.value}
                 </label>
-                { current.withNumber ? <SubmitterTypeInput {...current.withNumberSettings}/> : null }
+                
               </div>
             );
           })}

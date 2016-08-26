@@ -70,6 +70,24 @@ export default class ContributeController {
       const layer = lang.getObject('appState.app.map.layer',false,this);
       const token = lang.getObject('appState.app.portal.user.credential.token',false,this);
       const graphic = $.extend(true,{},lang.getObject('appState.app.contributing.graphic',false,this));
+
+      // for some reason, the form was not picking up the selected value automatically.
+      // so i'm manually searching for the selected value from the radio group, and making sure it's added to the graphic's attributes
+      if (!graphic.attributes.ENTERED_BY) {
+        const val = $('input[name=ENTERED_BY]:checked', 'form').val();
+
+        graphic.attributes.ENTERED_BY = val;
+
+        // just remove the attribute for NUMBER_IN_GROUP if 'Individual' is selected
+        if (val === 'Individual' && graphic.attributes.NUMBER_IN_GROUP) {
+          delete graphic.attributes.NUMBER_IN_GROUP;
+        }
+      }
+
+      // add in the numbers for female/male ratio
+      graphic.attributes.RATIO_MALE = window.maleRatio || 0;
+      graphic.attributes.RATIO_FEMALE = window.femaleRatio || 0;
+
       const attachments = [];
 
       const uploadAttachments = function uploadAttachments(oid) {
@@ -118,6 +136,8 @@ export default class ContributeController {
 
         var div = $('#toExport');
 
+        div.children('.ratio').css('visibility', 'hidden');
+
         var w = div.width();
 
         var h = div.height();
@@ -127,6 +147,8 @@ export default class ContributeController {
           height: h,
           onrendered: function(canvas) {
             canvas.toBlob(function (blob) {
+
+              div.children('.ratio').css('visibility', 'visible');
 
               attachments.push({
                 field: 'PrimaryThumbnail',
@@ -170,7 +192,9 @@ export default class ContributeController {
         //console.log(newX, newY);
 
         var newX = -1577;
+
         var newY = -353;
+
         context.translate(newX, newY);
         context.scale(2,2);
 

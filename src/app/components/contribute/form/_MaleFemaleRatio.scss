@@ -41,12 +41,14 @@
 .man {
   position: relative;
   margin-top: auto;
-  color: #0079c1;
+  /*color: #0079c1;*/
+  color: #f49600;
 }
 .woman {
   position: relative;
   margin-top: auto;
-  color: #d81b60;
+  /*color: #d81b60;*/
+  color: #f49600;
 }
 .man, .woman {
   font-size: 3em;
@@ -83,7 +85,7 @@
   left: 10%;
   height: 1px;
   width: 80%;
-  border-bottom: 1px solid black;
+  /*border-bottom: 1px solid black;*/
 }
 .ratio .male, .female {
   display: flex;

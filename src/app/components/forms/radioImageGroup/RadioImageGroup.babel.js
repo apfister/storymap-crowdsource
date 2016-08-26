@@ -20,12 +20,14 @@ export default class RadioInput extends FormGroup {
 
   onChange(e) {
     this.input.value = e.target.value;
-    
-    const ratioKeeper = window.ratioKeeper;
-    
-    ratioKeeper[this.props.id] = e.target.value;
 
-    window.doRatioUpdate();
+    if (e.target.name !== 'GENDER') {
+      const ratioKeeper = window.ratioKeeper;
+    
+      ratioKeeper[this.props.id] = e.target.value;
+
+      window.doRatioUpdate();
+    }
     
     super.onChange();
   }

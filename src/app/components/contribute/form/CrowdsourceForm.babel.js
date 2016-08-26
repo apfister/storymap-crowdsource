@@ -175,7 +175,7 @@ export default class CrowdsourceForm extends React.Component {
       }
     };
 
-    if (field.type === 'text' || field.type === 'textarea' || field.type === 'location' || field.type === 'select') {
+    if (field.type === 'text' || field.type === 'textarea' || field.type === 'location' || field.type === 'select' || field.type === 'input') {
       const maxLength = this.getFieldDefinitionValue(field.fieldID,'length');
       const options = {
         inputAttr: {
@@ -229,25 +229,13 @@ export default class CrowdsourceForm extends React.Component {
 
       settings.validations = [];
 
-      options.options.forEach(function (opt) {
-        if (opt.withNumber) {
-          let newDefaults = $.extend(true, {}, defaults, opt.withNumberSettings);
-          newDefaults.id = opt.withNumberSettings.fieldID;
-          newDefaults.attribute = opt.withNumberSettings.attributeName;
-          delete newDefaults.label;
-          newDefaults.inputAttr = { 
-            placeholder: opt.withNumberSettings.placeholder || '', 
-            disabled: 'disabled'
-          };
-          opt.withNumberSettings = newDefaults;
-          // opt.withNumberSettings = $.extend(true, {}, newDefaults, opt.withNumberSettings);
-        }
-      }, this);
-
       return <SubmitterTypeRadioGroup {...settings}></SubmitterTypeRadioGroup>;
     } else if (field.type === 'submitter-type-input') {
       const options = {
-        options: field.options
+        inputAttr: {
+          placeholder: '25',
+          disabled: 'disabled'
+        }
       };
 
       const settings = $.extend(true,{},defaults,options);
