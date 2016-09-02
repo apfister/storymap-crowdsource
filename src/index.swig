@@ -38,7 +38,7 @@
 		//-------------------------------------------------------------------------------------------
 		var configOptions = {
 			// Enter an application ID created through the Crowdsource builder
-			appid: "",
+			appid: "59dafbcca19645a39cdb4ed43b8b0d64",
 			// Optionally to be able to use the appid URL parameter, configure here the list of application author
 			//  whose application are allowed to be viewed by this Crowdsource deployment
 			// This is the Portal username of the Crowdsource owner (e.g. ["user1"] or ["user1", "user2"])
@@ -111,16 +111,70 @@
       width: 60px;
       margin: 20px;
 		}
-	</style>
 
-  <script src="/lib/male-female-scripts/html2canvas0.5.0-alpha1.min.js"></script>
-  <script src="/lib/male-female-scripts/download2.js"></script>
+    .emma-overlay {
+      position: absolute;
+      right: 60px;
+      bottom: 50px;
+      opacity: 0.9;
+      z-index: 1;
+    }
+
+    .emma-overlay:hover {
+      opacity: 1;
+    }
+
+    .emma-overlay img {
+      height: 200px;
+      border-radius: 10px;
+      cursor: pointer;
+      opacity: .95;
+    }
+
+    /*.sidePanel-default .main-app-header.header {
+      background-color: #b9b9ba;
+      opacity: 0.9;
+      color: #000;
+    }*/
+    .participate.btn {
+      background-color: #f49600;
+      border-color: orange;
+    }
+
+    .icon-twitter {
+      color: #00aced;
+    }
+    .icon-facebook {
+      color: #3b5998;
+    }
+    .icon-link {
+      color: #f49600;
+    }
+	</style>
 
   <script type="text/javascript">
     var app = {
       version: '{{ versionStr }}',
       pathJSAPI: '//js.arcgis.com/3.17/'
     };
+
+    // polyfill for safari, etc. pulled from : https://developer.mozilla.org/en-US/docs/Web/API/HTMLCanvasElement/toBlob
+    if (!HTMLCanvasElement.prototype.toBlob) {
+     Object.defineProperty(HTMLCanvasElement.prototype, 'toBlob', {
+      value: function (callback, type, quality) {
+
+        var binStr = atob( this.toDataURL(type, quality).split(',')[1] ),
+            len = binStr.length,
+            arr = new Uint8Array(len);
+
+        for (var i=0; i<len; i++ ) {
+         arr[i] = binStr.charCodeAt(i);
+        }
+
+        callback( new Blob( [arr], {type: type || 'image/png'} ) );
+      }
+     });
+    }
   </script>
   <script type="text/javascript" src="{{ pathMods.resourcePath }}app/main-config{{ pathMods.minPath }}.js"></script>
   {% if environment === 'dev' %}<script src="//localhost:8888/livereload.js"></script>{% endif %}

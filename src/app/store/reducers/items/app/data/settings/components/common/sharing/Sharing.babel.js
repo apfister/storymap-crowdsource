@@ -16,6 +16,10 @@ const defaultTwitter = {
   related: 'EsriStoryMaps'
 };
 
+const defaultMyShare = {
+  text: 'foo'
+};
+
 export const services = function (state = defaultServices, action) {
   switch (action.type) {
     case UPDATE_SETTINGS_COMMON_SHARING_SERVICES:
@@ -34,9 +38,19 @@ export const twitter = function (state = defaultTwitter, action) {
   }
 };
 
+export const myShare = function (state = defaultMyShare, action) {
+  switch (action.type) {
+    case 'UPDATE_SETTINGS_COMMON_SHARING_MY_SHARE':
+      return $.extend(true,{},state,action.settings);
+    default:
+      return state;
+  }
+};
+
 export const sharing = combineReducers({
   services,
-  twitter
+  twitter,
+  myShare
 });
 
 export default sharing;

@@ -49,9 +49,12 @@ export default class Location extends FormGroup {
       theme: 'calcite-geocoder',
       arcgisGeocoder: {
         // categories: ['City', 'Subregion', 'Region', 'Country']
-        categories: ['Populated Place']
+        categories: ['Populated Place'],
+        outFields: 'Country'
       }
     },this.geocoderContainer[0]);
+
+    this.countryStash = [{CountryName: 'Argentina', ThreeDigitCountryCode: 'ARG'}, {CountryName: 'Australia', ThreeDigitCountryCode: 'AUS'}, {CountryName: 'Austria', ThreeDigitCountryCode: 'AUT'}, {CountryName: 'Belgium', ThreeDigitCountryCode: 'BEL'}, {CountryName: 'Brazil', ThreeDigitCountryCode: 'BRA'}, {CountryName: 'Bulgaria', ThreeDigitCountryCode: 'BGR'}, {CountryName: 'Canada', ThreeDigitCountryCode: 'CAN'}, {CountryName: 'Chile', ThreeDigitCountryCode: 'CHL'}, {CountryName: 'Croatia', ThreeDigitCountryCode: 'HRV'}, {CountryName: 'Czech Republic', ThreeDigitCountryCode: 'CZE'}, {CountryName: 'Denmark', ThreeDigitCountryCode: 'DNK'}, {CountryName: 'Estonia', ThreeDigitCountryCode: 'EST'}, {CountryName: 'Finland', ThreeDigitCountryCode: 'FIN'}, {CountryName: 'France', ThreeDigitCountryCode: 'FRA'}, {CountryName: 'Germany', ThreeDigitCountryCode: 'DEU'}, {CountryName: 'Greece', ThreeDigitCountryCode: 'GRC'}, {CountryName: 'Guatemala', ThreeDigitCountryCode: 'GTM'}, {CountryName: 'Hong Kong', ThreeDigitCountryCode: 'HKG'}, {CountryName: 'Ireland', ThreeDigitCountryCode: 'IRL'}, {CountryName: 'Israel', ThreeDigitCountryCode: 'ISR'}, {CountryName: 'Italy', ThreeDigitCountryCode: 'ITA'}, {CountryName: 'Japan', ThreeDigitCountryCode: 'JPN'}, {CountryName: 'Latvia', ThreeDigitCountryCode: 'LVA'}, {CountryName: 'Liechtenstein', ThreeDigitCountryCode: 'LIE'}, {CountryName: 'Lithuania', ThreeDigitCountryCode: 'LTU'}, {CountryName: 'Luxembourg', ThreeDigitCountryCode: 'LUX'}, {CountryName: 'Malaysia', ThreeDigitCountryCode: 'MYS'}, {CountryName: 'Mexico', ThreeDigitCountryCode: 'MEX'}, {CountryName: 'Netherlands', ThreeDigitCountryCode: 'NLD'}, {CountryName: 'New Zealand', ThreeDigitCountryCode: 'NZL'}, {CountryName: 'Norway', ThreeDigitCountryCode: 'NOR'}, {CountryName: 'Poland', ThreeDigitCountryCode: 'POL'}, {CountryName: 'Portugal', ThreeDigitCountryCode: 'PRT'}, {CountryName: 'Puerto Rico', ThreeDigitCountryCode: 'PRI'}, {CountryName: 'Romania', ThreeDigitCountryCode: 'ROU'}, {CountryName: 'Russian Federation', ThreeDigitCountryCode: 'RUS'}, {CountryName: 'Singapore', ThreeDigitCountryCode: 'SGP'}, {CountryName: 'Slovak Republic', ThreeDigitCountryCode: 'SVK'}, {CountryName: 'Spain', ThreeDigitCountryCode: 'ESP'}, {CountryName: 'Suriname', ThreeDigitCountryCode: 'SUR'}, {CountryName: 'Sweden', ThreeDigitCountryCode: 'SWE'}, {CountryName: 'Switzerland', ThreeDigitCountryCode: 'CHE'}, {CountryName: 'Turkey', ThreeDigitCountryCode: 'TUR'}, {CountryName: 'United Kingdom', ThreeDigitCountryCode: 'GBR'}, {CountryName: 'United States', ThreeDigitCountryCode: 'USA'}, {CountryName: 'Uruguay', ThreeDigitCountryCode: 'URY'}, {CountryName: 'Andorra', ThreeDigitCountryCode: 'AND'}, {CountryName: 'Bahamas', ThreeDigitCountryCode: 'BHS'}, {CountryName: 'Bahrain', ThreeDigitCountryCode: 'BHR'}, {CountryName: 'Botswana', ThreeDigitCountryCode: 'BWA'}, {CountryName: 'Brunei Darussalam', ThreeDigitCountryCode: 'BRN'}, {CountryName: 'Cayman Islands', ThreeDigitCountryCode: 'CYM'}, {CountryName: 'China', ThreeDigitCountryCode: 'CHN'}, {CountryName: 'Colombia', ThreeDigitCountryCode: 'COL'}, {CountryName: 'Costa Rica', ThreeDigitCountryCode: 'CRI'}, {CountryName: 'French Guyana', ThreeDigitCountryCode: 'GUF'}, {CountryName: 'Gibraltar', ThreeDigitCountryCode: 'GIB'}, {CountryName: 'Guadeloupe', ThreeDigitCountryCode: 'GLP'}, {CountryName: 'Hungary', ThreeDigitCountryCode: 'HUN'}, {CountryName: 'Iceland', ThreeDigitCountryCode: 'ISL'}, {CountryName: 'India', ThreeDigitCountryCode: 'IND'}, {CountryName: 'Indonesia', ThreeDigitCountryCode: 'IDN'}, {CountryName: 'Jordan', ThreeDigitCountryCode: 'JOR'}, {CountryName: 'Kuwait', ThreeDigitCountryCode: 'KWT'}, {CountryName: 'Lebanon', ThreeDigitCountryCode: 'LBN'}, {CountryName: 'Macau', ThreeDigitCountryCode: 'MAC'}, {CountryName: 'Malta', ThreeDigitCountryCode: 'MLT'}, {CountryName: 'Martinique', ThreeDigitCountryCode: 'MTQ'}, {CountryName: 'Monaco', ThreeDigitCountryCode: 'MCO'}, {CountryName: 'Namibia', ThreeDigitCountryCode: 'NAM'}, {CountryName: 'Oman', ThreeDigitCountryCode: 'OMN'}, {CountryName: 'Panama', ThreeDigitCountryCode: 'PAN'}, {CountryName: 'Peru', ThreeDigitCountryCode: 'PER'}, {CountryName: 'Philippines', ThreeDigitCountryCode: 'PHL'}, {CountryName: 'Qatar', ThreeDigitCountryCode: 'QAT'}, {CountryName: 'Reunion', ThreeDigitCountryCode: 'REU'}, {CountryName: 'San Marino', ThreeDigitCountryCode: 'SMR'}, {CountryName: 'Saudi Arabia', ThreeDigitCountryCode: 'SAU'}, {CountryName: 'Slovenia', ThreeDigitCountryCode: 'SVN'}, {CountryName: 'South Africa', ThreeDigitCountryCode: 'ZAF'}, {CountryName: 'South Korea', ThreeDigitCountryCode: 'KOR'}, {CountryName: 'St. Barthelemy', ThreeDigitCountryCode: 'BLM'}, {CountryName: 'Thailand', ThreeDigitCountryCode: 'THA'}, {CountryName: 'United Arab Emirates', ThreeDigitCountryCode: 'ARE'}, {CountryName: 'US Virgin Islands', ThreeDigitCountryCode: 'VIR'}, {CountryName: 'Vatican City', ThreeDigitCountryCode: 'VAT'}, {CountryName: 'Albania', ThreeDigitCountryCode: 'ALB'}, {CountryName: 'Belarus', ThreeDigitCountryCode: 'BLR'}, {CountryName: 'Belize', ThreeDigitCountryCode: 'BLZ'}, {CountryName: 'Bosnia and Herzegovina', ThreeDigitCountryCode: 'BIH'}, {CountryName: 'Cambodia', ThreeDigitCountryCode: 'KHM'}, {CountryName: 'Egypt', ThreeDigitCountryCode: 'EGY'}, {CountryName: 'Guam', ThreeDigitCountryCode: 'GUM'}, {CountryName: 'Kazakhstan', ThreeDigitCountryCode: 'KAZ'}, {CountryName: 'Kenya', ThreeDigitCountryCode: 'KEN'}, {CountryName: 'Kosovo', ThreeDigitCountryCode: 'RKS'}, {CountryName: 'Lesotho', ThreeDigitCountryCode: 'LSO'}, {CountryName: 'Macedonia', ThreeDigitCountryCode: 'MKD'}, {CountryName: 'Moldova', ThreeDigitCountryCode: 'MDA'}, {CountryName: 'Montenegro', ThreeDigitCountryCode: 'MNE'}, {CountryName: 'Morocco', ThreeDigitCountryCode: 'MAR'}, {CountryName: 'Mozambique', ThreeDigitCountryCode: 'MOZ'}, {CountryName: 'Nigeria', ThreeDigitCountryCode: 'NGA'}, {CountryName: 'Serbia', ThreeDigitCountryCode: 'SRB'}, {CountryName: 'Swaziland', ThreeDigitCountryCode: 'SWZ'}, {CountryName: 'Taiwan', ThreeDigitCountryCode: 'TWN'}, {CountryName: 'Ukraine', ThreeDigitCountryCode: 'UKR'}, {CountryName: 'Venezuela', ThreeDigitCountryCode: 'VEN'}, {CountryName: 'Vietnam', ThreeDigitCountryCode: 'VNM'} ];
 
     this.locateButton = new LocateButton({
       map: this.props.map,
@@ -167,6 +170,32 @@ export default class Location extends FormGroup {
           geometry: selection.result.feature.geometry
         }
       };
+      
+      const selC = this.countryStash.filter( (c) => {
+         if (c.ThreeDigitCountryCode === selection.result.feature.attributes.Country) {
+          return true;
+         }
+        }
+      );
+
+      if (selC && selC[0]) {
+        window.selectedCountry = selC[0].CountryName;
+      } else {
+        const name = selection.result.name;
+        
+        let countryTry = '';
+
+        try {
+          countryTry = name.substr(name.lastIndexOf(',')+1, name.length).trim();
+        } catch (e) {
+          countryTry = selection.result.feature.attributes.Country;
+        }
+        
+        window.selectedCountry = countryTry;
+      }
+
+      window.selectedISO3Digit = selection.result.feature.attributes.Country;
+
     }
     this.validateForm();
   }

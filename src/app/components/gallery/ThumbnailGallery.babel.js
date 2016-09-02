@@ -108,6 +108,8 @@ export const ThumbnailGallery = class ThumbnailGallery extends React.Component {
     //   </li>
     // );
     
+    const ratioDisplay = attr[this.props.ratioDisplayFields[0]] + ' : ' + attr[this.props.ratioDisplayFields[1]];
+
     return (
       <li className={itemClasses}
         key={attr[this.props.idField]}
@@ -115,6 +117,7 @@ export const ThumbnailGallery = class ThumbnailGallery extends React.Component {
         onClick={this.onSelect.bind(null,attr[this.props.idField])}>
         <LazyImage className="background-image" src={photoUrl}></LazyImage>
         <div className="info-card background-fill">
+          <h6>{ratioDisplay}</h6>
           <p>{attr[this.props.primaryField]}</p>
         </div>
       </li>

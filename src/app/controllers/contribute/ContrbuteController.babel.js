@@ -11,6 +11,8 @@ import Logger from 'babel/utils/logging/Logger';
 import viewerText from 'i18n!translations/viewer/nls/template';
 import 'babel/utils/helper/strings/StringUtils';
 
+import html2canvas from 'lib/html2canvas/dist/html2canvas.min';
+
 const _logger = new Logger({source: 'Contribute Controller'});
 
 const _onError = function onError(error) {
@@ -84,9 +86,20 @@ export default class ContributeController {
         }
       }
 
+      // check for and capture login service
+      if (window.loginService) {
+        graphic.attributes.LOGIN_SERVICE = window.loginService;
+      }
+
+      // add in atts for country roll up
+      graphic.attributes.COUNTRY_NAME = window.selectedCountry;
+      graphic.attributes.COUNTRY_ISO3_DIGIT = window.selectedISO3Digit;
+
       // add in the numbers for female/male ratio
       graphic.attributes.RATIO_MALE = window.maleRatio || 0;
       graphic.attributes.RATIO_FEMALE = window.femaleRatio || 0;
+
+      window.myRatio = window.femaleRatio + ':' + window.maleRatio;
 
       const attachments = [];
 
@@ -142,11 +155,11 @@ export default class ContributeController {
 
         var h = div.height();
 
-        html2canvas(div, {
+        window.html2canvas(div, {
           width: w,
           height: h,
           onrendered: function(canvas) {
-            canvas.toBlob(function (blob) {
+            canvas.toBlob( (blob) => {
 
               div.children('.ratio').css('visibility', 'visible');
 
@@ -193,19 +206,23 @@ export default class ContributeController {
 
         var newX = -1577;
 
-        var newY = -353;
+        // this works for development in "edit" mode
+        // var newY = -353;
+        
+        // this works for production. no "edit=true" in URL
+        var newY = -200;
 
         context.translate(newX, newY);
         context.scale(2,2);
 
-        html2canvas(div, {
+        window.html2canvas(div, {
           canvas: testcanvas,
           width: w,
           height: h,
           onrendered: function(canvas) {
 
             // var img = canvas.toDataURL("image/png");
-            canvas.toBlob(function (blob) {
+            canvas.toBlob( (blob) => {
 
               attachments.push({
                 field: 'PrimaryPhoto',
@@ -267,6 +284,8 @@ export default class ContributeController {
         if ($.isArray(res.addResults) && res.addResults[0] && res.addResults[0].success) {
           const oid = res.addResults[0].objectId;
 
+          window.shareFID = res.addResults[0].objectId;
+
           MapActions.selectFeatures(oid);
 
           generateRatioThumbnail().then( () => {
@@ -317,6 +336,9 @@ export default class ContributeController {
     if (lang.getObject('appState.app.map.originalObject.refreshCrowdsourceLayer',false,this)) {
         this.appState.app.map.originalObject.refreshCrowdsourceLayer();
     }
+
+    window.showMyShare = true;
+
   }
 
   displayContributionShownAfterReviewMessage() {

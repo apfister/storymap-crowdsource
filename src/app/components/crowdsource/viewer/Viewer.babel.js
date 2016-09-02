@@ -167,6 +167,7 @@ class Viewer extends React.Component {
                 {...this.props.components.map.crowdsourceLayer}>
               </ContributePanel> : null }
               { this.props.layout.visibleComponents.indexOf(componentNames.SELECTED_SHARES) >= 0 && this.getSelectedFeatures().length > 0 ? <SelectedShares
+                myShare={this.props.components.common.sharing.myShare}
                 className="overlay-panel"
                 items={this.getSelectedFeatures()}
                 layer={this.props.map.layer}
@@ -239,6 +240,7 @@ class Viewer extends React.Component {
                 {...this.props.components.map.crowdsourceLayer}>
               </ContributePanel> : null }
               { this.props.layout.visibleComponents.indexOf(componentNames.SELECTED_SHARES) >= 0 && this.getSelectedFeatures().length > 0 ? <SelectedShares
+                myShare={this.props.components.common.sharing.myShare}
                 className="overlay-panel"
                 items={this.getSelectedFeatures()}
                 layer={this.props.map.layer}

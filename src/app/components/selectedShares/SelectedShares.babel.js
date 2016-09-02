@@ -4,6 +4,7 @@ import LazyImage from 'babel/components/helper/lazyImage/LazyImage';
 import Autolinker from 'babel/components/helper/autolinker/Autolinker';
 import viewerText from 'i18n!translations/viewer/nls/template';
 import builderText from 'mode!isBuilder?i18n!translations/builder/nls/template';
+import ShareButtonPaneMy from 'babel/components/helper/sharing/ShareButtonPaneMy';
 
 export default class SelectedShares extends React.Component {
 
@@ -16,6 +17,8 @@ export default class SelectedShares extends React.Component {
   }
 
   render() {
+
+    // console.log(this.props.myShare);
 
     const mainClasses = Helper.classnames([this.props.className,this.props.classNames,
       'selected-shares'
@@ -34,6 +37,8 @@ export default class SelectedShares extends React.Component {
           {this.props.items.map((current) => {
 
             const attributes = current[this.props.attributePath];
+
+            window.showingFID = attributes.FID;
 
             return (
               <li key={attributes[this.props.idField]}>
@@ -67,6 +72,7 @@ export default class SelectedShares extends React.Component {
         <button type="button" className={closeBtnClasses} onClick={this.props.closeAction}>
           { viewerText.common.buttons.close }
         </button>
+        { (window.showMyShare && (window.shareFID === window.showingFID)) ? <ShareButtonPaneMy className="cell" config={this.props.myShare} /> : null }
       </div>
     );
   }

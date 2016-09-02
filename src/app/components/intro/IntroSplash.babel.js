@@ -36,6 +36,8 @@ export const IntroSplash = class IntroSplash extends React.Component {
 
     let background;
 
+    let emmaOverlay = "http://sdgs.maps.arcgis.com/sharing/rest/content/items/cbe1380a3b5d49d6a885ca55c759bbb2/data";
+
     switch (this.props.background.type) {
       case 'photo':
         const backgroundUrl = Helper.attachmentUtils.checkForCredential({
@@ -47,6 +49,19 @@ export const IntroSplash = class IntroSplash extends React.Component {
         break;
     }
 
+    // Original
+
+    // switch (this.props.background.type) {
+    //   case 'photo':
+    //     const backgroundUrl = Helper.attachmentUtils.checkForCredential({
+    //       url: this.props.background.source,
+    //       portal: this.props.portal
+    //     });
+
+    //     background = <LazyImage className="background-image" src={backgroundUrl}></LazyImage>;
+    //     break;
+    // }
+
     return (
       <div className={introClass}>
         {builderText && !this.props.editingAllowed ? (
@@ -56,6 +71,7 @@ export const IntroSplash = class IntroSplash extends React.Component {
             className="background-edit-button btn btn-primary btn-lg"
             dangerouslySetInnerHTML={{__html: getIcon('edit')}}></button>
         ) : null}
+        <div className="emma-overlay" onClick={this.emmaClick}><img src={emmaOverlay}/></div>
         {background}
         <InlineEditorWrapper
           className="title-pane background-fill"
@@ -73,6 +89,10 @@ export const IntroSplash = class IntroSplash extends React.Component {
       </div>
     );
 
+  }
+
+  emmaClick() {
+    window.open('http://worldslargestlesson.globalgoals.org/worlds-largest-lesson-2016-focus-on-goal-5-gender-equality/');
   }
 
   getEditConfig(component) {
