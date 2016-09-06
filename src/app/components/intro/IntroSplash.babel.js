@@ -34,9 +34,11 @@ export const IntroSplash = class IntroSplash extends React.Component {
         </button>
       </InlineEditorWrapper> : null;
 
+    const isMobile = window.mobileAndTabletcheck();
+
     let background;
 
-    let emmaOverlay = "http://sdgs.maps.arcgis.com/sharing/rest/content/items/cbe1380a3b5d49d6a885ca55c759bbb2/data";
+    let emmaOverlay = "http://sdgs.maps.arcgis.com/sharing/rest/content/items/e07762b215f648a8b19c9e8846d31138/data";
 
     switch (this.props.background.type) {
       case 'photo':
@@ -71,7 +73,7 @@ export const IntroSplash = class IntroSplash extends React.Component {
             className="background-edit-button btn btn-primary btn-lg"
             dangerouslySetInnerHTML={{__html: getIcon('edit')}}></button>
         ) : null}
-        <div className="emma-overlay" onClick={this.emmaClick}><img src={emmaOverlay}/></div>
+        <div className={(isMobile) ? 'emma-overlay-mobile' : 'emma-overlay'} onClick={this.emmaClick}><img src={emmaOverlay}/></div>
         {background}
         <InlineEditorWrapper
           className="title-pane background-fill"

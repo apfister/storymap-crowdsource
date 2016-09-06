@@ -204,7 +204,15 @@ export default class ContributeController {
         // var newY = -260;
         //console.log(newX, newY);
 
-        var newX = -1577;
+        let newX = 0;
+        
+        if (window.mobileAndTabletcheck()) {
+          newX = Math.round( (div.position().left + parseInt(div.css('marginLeft')) )*2 ) * -1;
+        } else {
+          newX = -1577;
+        }
+
+        // var newX = -1577;
 
         // this works for development in "edit" mode
         // var newY = -353;

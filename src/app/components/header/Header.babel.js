@@ -37,7 +37,12 @@ export const Header = class Header extends React.Component {
 
   render() {
 
-    const headerClass = Helper.classnames([this.props.className, 'header', 'navbar', 'main-app-header']);
+    let headerClass = Helper.classnames([this.props.className, 'header', 'navbar', 'main-app-header']);
+    
+    if (window.mobileAndTabletcheck()) {
+      headerClass = Helper.classnames([this.props.className, 'header', 'navbar', 'main-app-header', 'mobile-enlarge svg']);
+    }
+
     const participateIconHtml = {
       __html: getIcon('participate')
     };
