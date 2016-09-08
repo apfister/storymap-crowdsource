@@ -58,6 +58,9 @@ class Viewer extends React.Component {
           loading={this.props.loading}>
         </Header>
         <IntroSplash
+          showParticipateActionButton={this.props.components.contribute.participationAllowed && this.props.loading.map && !this.props.contributing.active}
+          participationButtonDisabled={this.props.layout.visibleComponents.indexOf(componentNames.SIDE_PANEL_SETTINGS) >= 0}
+          participateAction={this.props.updateContributeState.bind(this,{active: true})}
           editAction={this.props.showComponent.bind(this,[componentNames.SIDE_PANEL_SETTINGS,componentNames.SIDE_PANEL_SETTINGS_STRING_MATCH + componentNames.SPS_INTRO_SPLASH])}
           editingAllowed={this.props.mode.isBuilder && this.props.layout.visibleComponents.indexOf(componentNames.SIDE_PANEL_SETTINGS_STRING_MATCH + componentNames.SPS_INTRO_SPLASH) >= 0}
           saveActions={this.props.introSaveActions}

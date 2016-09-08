@@ -12,6 +12,8 @@ export const IntroSplash = class IntroSplash extends React.Component {
 
   constructor(props) {
     super(props);
+
+    this.participateAction = this.participateAction.bind(this);
   }
 
   render() {
@@ -39,6 +41,19 @@ export const IntroSplash = class IntroSplash extends React.Component {
     let background;
 
     let emmaOverlay = "http://sdgs.maps.arcgis.com/sharing/rest/content/items/e07762b215f648a8b19c9e8846d31138/data";
+
+    const participateIconHtml = {
+      __html: getIcon('participate')
+    };
+
+    const participateBtn = this.props.showParticipateActionButton ? (
+      <button ref={(ref) => this.participateBtn = ref} className={Helper.classnames(['participate', 'btn', 'btn-primary', 'nav-btn', 'participate-splash'],{
+        disabled: this.props.participationButtonDisabled
+      })} onClick={this.participateAction}>
+      <span className="icon" dangerouslySetInnerHTML={participateIconHtml}></span>
+      <span className="text">{this.props.participateShort}</span>
+      </button>
+    ) : null;
 
     switch (this.props.background.type) {
       case 'photo':
@@ -86,11 +101,18 @@ export const IntroSplash = class IntroSplash extends React.Component {
         </InlineEditorWrapper>
         <ReactCSSTransitionGroup component="div" className="action-buttons" transitionName="wait-for-action" transitionEnterTimeout={1000} transitionLeaveTimeout={1000} >
           {loader}
+          {participateBtn}
           {showExploreActionButton}
         </ReactCSSTransitionGroup>
       </div>
     );
 
+  }
+
+  participateAction() {
+    if (!this.props.participationButtonDisabled) {
+      this.props.participateAction();
+    }
   }
 
   emmaClick() {
@@ -187,6 +209,7 @@ export const IntroSplash = class IntroSplash extends React.Component {
 };
 
 IntroSplash.propTypes = {
+  participateAction: React.PropTypes.func,
   editingAllowed: React.PropTypes.bool,
   background: React.PropTypes.shape({}),
   exploreText: React.PropTypes.string,
@@ -215,6 +238,7 @@ IntroSplash.propTypes = {
 };
 
 IntroSplash.defaultProps = {
+  participateAction: () => {},
   editingAllowed: false,
   background: {},
   exploreText: '',

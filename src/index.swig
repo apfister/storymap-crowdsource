@@ -170,6 +170,20 @@
       height: 1.75em !important;
       width: 1.75em !important;
     }
+
+    /*for Participate button above "Explore Map" button on splash page*/
+    .participate-splash {
+      border-radius: 10px !important;
+      margin-bottom: 30px !important;
+      min-height: 10px !important;
+      padding: 20px !important;
+    }
+
+    /*in mobile view, make the participate tab orange and reset opacity to call out more*/
+    .bottom-navigation .text-btn:last-child {
+      color: orange !important;
+      opacity: 1 !important;
+    }
 	</style>
 
   <script type="text/javascript">
