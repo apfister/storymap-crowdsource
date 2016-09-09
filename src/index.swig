@@ -116,19 +116,14 @@
       position: absolute;
       right: 60px;
       bottom: 50px;
-      opacity: 0.9;
       z-index: 1;
-    }
-
-    .emma-overlay:hover {
-      opacity: 1;
+      cursor: pointer;
     }
 
     .emma-overlay img {
       height: 200px;
       border-radius: 10px;
       cursor: pointer;
-      opacity: .95;
     }
 
     .emma-overlay-mobile img {
@@ -138,6 +133,16 @@
       z-index: 1;
       height: 120px;
       border-radius: 10px;
+    }
+
+    .emma-overlay:hover {
+      cursor: pointer;
+      -webkit-border-radius: 10px;
+      -moz-border-radius: 10px;
+      border-radius: 10px;
+      -webkit-box-shadow: 0px 0px 30px 0px rgba(255, 255, 255, 0.67);
+      -moz-box-shadow:    0px 0px 30px 0px rgba(255, 255, 255, 0.67);
+      box-shadow:         0px 0px 30px 0px rgba(255, 255, 255, 0.67);
     }
 
     /*.sidePanel-default .main-app-header.header {
