@@ -205,7 +205,7 @@ export default class ContributeController {
         //console.log(newX, newY);
 
         let newX = 0;
-        
+
         if (window.mobileAndTabletcheck()) {
           newX = Math.round( (div.position().left + parseInt(div.css('marginLeft')) )*2 ) * -1;
         } else {
@@ -304,6 +304,8 @@ export default class ContributeController {
                 _onError(err);
                 this.hideUncompleted(oid);
                 this.displayContributeErrorMessage();
+
+                window.updateLiveRatio();
               });
 
             });

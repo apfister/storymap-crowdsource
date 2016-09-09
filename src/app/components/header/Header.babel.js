@@ -4,6 +4,7 @@ import ReactDOM from 'reactDom';
 import Helper from 'babel/utils/helper/Helper';
 import {getIcon} from 'babel/utils/helper/icons/IconGenerator';
 import ShareButtonPane from 'babel/components/helper/sharing/ShareButtonPane';
+import LiveRatio from 'babel/components/header/LiveRatio';
 import builderText from 'mode!isBuilder?i18n!translations/builder/nls/template';
 import 'bootstrap/tooltip';
 import 'bootstrap/transition';
@@ -73,7 +74,9 @@ export const Header = class Header extends React.Component {
             </a>
           )}
           <div className="title-cell cell fill-cell">
-            <h4 className="title" tabIndex="0" onClick={this.props.homeAction}>{this.props.title}</h4>
+            <h4 className="title" tabIndex="0" onClick={this.props.homeAction}>{this.props.title}
+              <LiveRatio></LiveRatio>
+            </h4>
           </div>
           <ReactCSSTransitionGroup
             className="cell participate-cell"
