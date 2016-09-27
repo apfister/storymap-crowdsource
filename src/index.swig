@@ -189,6 +189,11 @@
       color: orange !important;
       opacity: 1 !important;
     }
+
+    /*make the header logo a bit larger to adjust for the custom image showing UNICEF logo*/
+    .main-app-header.header img.logo {
+      height: 65px !important;
+    }
 	</style>
 
   <script type="text/javascript">
