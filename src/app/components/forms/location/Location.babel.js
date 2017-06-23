@@ -58,7 +58,11 @@ export default class Location extends FormGroup {
       highlightLocation: false,
       minCharacters: 1,
       map: this.props.map,
-      theme: 'calcite-geocoder'
+      theme: 'calcite-geocoder',
+      arcgisGeocoder: {
+        categories: ['Populated Place'],
+        outFields: 'Country'
+      }
     },this.geocoderContainer[0]);
 
     this.locateButton = new LocateButton({
@@ -165,6 +169,7 @@ export default class Location extends FormGroup {
       'has-error': !this.state.isValid
     }]);
 
+    // no Locate or Find on Map buttons
     return (
       <div className={inputClasses}>
         <label htmlFor={this.props.id} className="control-label">{this.props.label}</label>
@@ -173,25 +178,42 @@ export default class Location extends FormGroup {
           className="geocoder"
           ref={(ref) => this.geocoderContainer = ref}>
         </div>
-        <div className="action-btn-wrapper">
-        <div
-          className="locator"
-          ref={(ref) => this.locatorContainer = ref}>
-        </div>
-        <div
-          className="find-on-map btn btn-default btn-sm"
-          ref={(ref) => this.findOnMapContainer = ref}
-          onClick={this.reverseGeocode.bind(this,{useMapCenter: true},false)}>
-            <span className="find-on-map-icon" dangerouslySetInnerHTML={{__html: getIcon('map-pin')}}></span>
-            <span className="find-on-map-text">{ViewerText.contribute.form.location.findOnMap}</span>
-        </div>
-        </div>
         { this.state.reverseCoords ? (
           <a href="#" onClick={this.reverseGeocode.bind(this,this.state.reverseCoords)}><small><strong>Did you mean:</strong> Longitude: {this.state.reverseCoords.longLatResult[0]} Latitude: {this.state.reverseCoords.longLatResult[1]}?</small></a>
         ) : null }
         {this.getErrorMessage ? this.getErrorMessage() : null}
       </div>
     );
+
+    // Original
+
+    // return (
+    //   <div className={inputClasses}>
+    //     <label htmlFor={this.props.id} className="control-label">{this.props.label}</label>
+    //     {this.props.tooltip ? <IconTooltip className="form-tooltip" {...this.props.tooltip} /> : null}
+    //     <div
+    //       className="geocoder"
+    //       ref={(ref) => this.geocoderContainer = ref}>
+    //     </div>
+    //     <div className="action-btn-wrapper">
+    //     <div
+    //       className="locator"
+    //       ref={(ref) => this.locatorContainer = ref}>
+    //     </div>
+    //     <div
+    //       className="find-on-map btn btn-default btn-sm"
+    //       ref={(ref) => this.findOnMapContainer = ref}
+    //       onClick={this.reverseGeocode.bind(this,{useMapCenter: true},false)}>
+    //         <span className="find-on-map-icon" dangerouslySetInnerHTML={{__html: getIcon('map-pin')}}></span>
+    //         <span className="find-on-map-text">{ViewerText.contribute.form.location.findOnMap}</span>
+    //     </div>
+    //     </div>
+    //     { this.state.reverseCoords ? (
+    //       <a href="#" onClick={this.reverseGeocode.bind(this,this.state.reverseCoords)}><small><strong>Did you mean:</strong> Longitude: {this.state.reverseCoords.longLatResult[0]} Latitude: {this.state.reverseCoords.longLatResult[1]}?</small></a>
+    //     ) : null }
+    //     {this.getErrorMessage ? this.getErrorMessage() : null}
+    //   </div>
+    // );
   }
 
   addInputAttributes() {

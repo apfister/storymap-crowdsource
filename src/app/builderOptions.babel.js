@@ -25,15 +25,6 @@ export const featureServiceDefaults = {
           }]
         }
       },
-      Name: {
-        required: true,
-        type: 'text',
-        fieldID: 'Name',
-        label: builderText.contribute.defaultForm.name.label,
-        attributeName: builderText.contribute.defaultForm.name.attribute,
-        placeholder: builderText.contribute.defaultForm.name.placeholder,
-        validations: ['arcgisSupportedHtml']
-      },
       LocationName: {
         required: true,
         type: 'location',
@@ -46,15 +37,6 @@ export const featureServiceDefaults = {
           dataType: 'location',
           storeGeometry: true
         }
-      },
-      Description: {
-        required: true,
-        type: 'textarea',
-        fieldID: 'Description',
-        label: builderText.contribute.defaultForm.description.label,
-        attributeName: builderText.contribute.defaultForm.description.attribute,
-        placeholder: builderText.contribute.defaultForm.description.placeholder,
-        validations: ['arcgisSupportedHtml']
       }
     }
   }

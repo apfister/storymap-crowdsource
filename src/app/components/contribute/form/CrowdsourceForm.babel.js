@@ -6,6 +6,7 @@ import Input from 'babel/components/forms/input/Input';
 import Textarea from 'babel/components/forms/textarea/Textarea';
 import Location from 'babel/components/forms/location/Location';
 import Photo from 'babel/components/forms/photo/Photo';
+import YesNoRadio from 'babel/components/forms/yesnoradio/YesNoRadio';
 import TermsAndConditions from 'babel/components/forms/termsAndConditions/TermsAndConditions';
 import ViewerText from 'i18n!translations/viewer/nls/template';
 import 'bootstrap/transition';
@@ -123,6 +124,8 @@ export default class CrowdsourceForm extends React.Component {
       this.formItemStatus[field.fieldID] = false;
     }
 
+    console.log('field', field);
+
     const defaults = {
       contributing: true,
       required: field.required,
@@ -204,6 +207,14 @@ export default class CrowdsourceForm extends React.Component {
       const settings = $.extend(true,{},defaults,options);
 
       return <Photo {...settings}></Photo>;
+    } else if (field.type === 'yesno-radio') {
+      const options = {
+        options: field.options
+      };
+
+      const settings = $.extend(true,{},defaults,options);
+
+      return <YesNoRadio {...settings}></YesNoRadio>;
     }
   }
 
