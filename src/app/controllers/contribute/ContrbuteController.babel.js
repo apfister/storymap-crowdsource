@@ -70,6 +70,38 @@ export default class ContributeController {
       const layer = lang.getObject('appState.app.map.layer',false,this);
       const token = lang.getObject('appState.app.portal.user.credential.token',false,this);
       const graphic = $.extend(true,{},lang.getObject('appState.app.contributing.graphic',false,this));
+
+      const eduOrStudent = graphic.attributes.EDUCATOR_STUDENT;
+
+      if (eduOrStudent === 'Educator') {
+        const educatorRole = $('#selEduRole').find(':selected').val();
+
+        graphic.attributes.EDUCATOR_ROLE = educatorRole;
+
+        const eduNumStudents = parseInt( $('#txtEduNumStudents').val() );
+
+        graphic.attributes.EDUCATOR_NUM_STUDENTS = eduNumStudents;
+
+        const eduClassAgeRange = $('#selClassAgeRange').find(':selected').val();
+
+        graphic.attributes.EDUCATOR_CLASS_AGE_RANGE = eduClassAgeRange;
+      } else {
+        const stuIndOrClass = $('input[name=studentRepresentingClassSize]:checked').val();
+
+        graphic.attributes.STUDENT_INDIVIDUAL_CLASS = stuIndOrClass;
+
+        if (stuIndOrClass !== 'Individual') {
+          const stuClassSize = parseInt( $('#txtStudentRepresentingClassSize').val() );
+
+          graphic.attributes.STUDENT_CLASS_NUMBER = stuClassSize;
+        }
+
+        const stuAgeRange = $('#selStudentClassAgeRange').find(':selected').val();
+
+        graphic.attributes.STUDENT_AGE_RANGE = stuAgeRange;
+
+      }
+
       const attachments = [];
 
       const uploadAttachments = function uploadAttachments(oid) {
@@ -119,12 +151,20 @@ export default class ContributeController {
         if (typeof value === 'object' && value.attachment && value.type) {
           switch (value.type) {
             case 'photo':
-              attachments.push({
+              let attach = {
                 field: key,
                 filename: key + value.ext,
-                attachment: Helper.attachmentUtils.dataURItoBlob(value.source),
                 url: false
-              });
+              };
+
+              if (value.source && value.source.type && value.source.type.indexOf('video') !== -1) {
+                attach.attachment = new Blob([value.source], { type: 'video\/mp4' });
+              } else {
+                attach.attachment = Helper.attachmentUtils.dataURItoBlob(value.source);
+              }
+
+              attachments.push(attach);
+
               delete graphic.attributes[key];
               break;
             default:

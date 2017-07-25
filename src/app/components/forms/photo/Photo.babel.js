@@ -64,7 +64,7 @@ export default class Photo extends FormGroup {
             <br />
             {ViewerText.contribute.form.photo.pickFile}
             <label className="btn-file" tabIndex="-1" onBlur={this.onBlur}>
-              <input id={this.props.id} style={{display: 'none'}} type="file" tabIndex="-1" accept="image/*" capture={navigator.userAgent.match(/iPad|iPhone|iPod/g) ? 'camera' : false} onChange={this.fileChange}></input>
+              <input id={this.props.id} style={{display: 'none'}} type="file" tabIndex="-1" accept="image/*,video/*" capture={navigator.userAgent.match(/iPad|iPhone|iPod/g) ? 'camera' : false} onChange={this.fileChange}></input>
             </label>
           </div>
         ) : (
@@ -112,7 +112,11 @@ export default class Photo extends FormGroup {
     const files = e.target.files;
 
     if (files && files.length) {
-      this.captureImageExif(files[0]);
+      if (files[0].type.indexOf('video') !== -1) {
+        this.captureVideoFile(files[0]);
+      } else {
+        this.captureImageExif(files[0]);
+      }
     }
 
     this.setState({
@@ -143,8 +147,60 @@ export default class Photo extends FormGroup {
     if (e.dataTransfer && e.dataTransfer.files && e.dataTransfer.files.length) {
 			e.preventDefault();
 			e.stopPropagation();
-      this.captureImageExif(e.dataTransfer.files[0]);
+      if (e.dataTransfer.files[0].type.indexOf('video') !== -1) {
+        this.captureVideoFile(e.dataTransfer.files[0]);
+      } else {
+        this.captureImageExif(e.dataTransfer.files[0]);
+      }
 		}
+  }
+
+  generateVideoThumbnail(file) {
+    const dfd = $.Deferred();
+
+    const canvasElem = $( '<canvas class="snapshot-generator"></canvas>' ).appendTo(document.body)[0];
+    const $video = $( '<video muted class="snapshot-generator"></video>' ).appendTo(document.body);
+
+    let stepTwoEventsFired = 0;
+
+    $video.one('loadedmetadata loadeddata suspend', () => {
+      if (++stepTwoEventsFired === 3) {
+        $video.one('seeked', function() {
+          canvasElem.height = this.videoHeight;
+          canvasElem.width = this.videoWidth;
+          canvasElem.getContext('2d').drawImage(this, 0, 0);
+
+          const snapshot = canvasElem.toDataURL();
+
+          dfd.resolve(snapshot);
+
+          // Delete the elements as they are no longer needed
+          $video.remove();
+          $(canvasElem).remove();
+
+        }).prop('currentTime', 0);
+      }
+    }).prop('src', URL.createObjectURL(file));
+
+    return dfd.promise();
+  }
+
+  captureVideoFile(file) {
+    this.generateVideoThumbnail(file)
+      .then( (response) => {
+        this.input.value = {
+          photos: {
+            PrimaryPhoto: {
+              ext: '.mp4',
+              source: file
+            },
+            PrimaryThumbnail: {
+              ext: '.jpeg',
+              source: response
+            }
+          }
+        };
+      });
   }
 
   captureImageExif(file) {

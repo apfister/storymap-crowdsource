@@ -1,0 +1,131 @@
+.yesno-group {
+
+  .radio {
+    margin-top: 0;
+  }
+
+  &.has-error .radio {
+    color: inherit;
+  }
+
+  &.required .radio label::after {
+    content: none;
+  }
+
+  label {
+    /*text-align: center;*/
+  }
+
+  label span {
+    vertical-align: top;
+  }
+
+  .radio.yesno-group input {
+    visibility: hidden;
+    position: absolute;
+  }
+
+  label > input + i.fa {
+    cursor:pointer;
+  }
+
+  // label > input:checked + i.fa-user-circle-o {
+  //   color: #f49600;
+  // }
+  //
+  // label > input:checked + i.fa-graduation-cap {
+  //   color: #f49600;
+  // }
+  //
+  // label > input:checked + i.fa-question-circle-o {
+  //   color: #ffa500;
+  // }
+
+  label > input:checked + i.fa {
+    color: #f49600; /* orange */
+  }
+
+
+  /*label > input:hover + i.fa {
+    text-shadow: #196fa6 0px 4px 4px;
+  }*/
+
+  .holder {
+    padding: 10px 100px 0px 50px;
+    display: flex;
+    justify-content: space-around;
+  }
+
+  .holder > div {
+    margin-right: 20px;
+  }
+
+  .fa-5x {
+    font-size: 5em;
+  }
+
+  .yesno-label {
+    margin-top: 10px;
+    font-size: 14px;
+    text-align: center;
+  }
+}
+
+.edu-role {
+  display: none;
+  margin-left: 30px;
+}
+
+.edu-num-students {
+  margin-top: 15px;
+}
+
+#txtEduNumStudents {
+  // visibility: visible;
+  // position: relative;
+  text-align: center;
+  width: 70px;
+  display: inline-block !important;
+}
+
+#lblEduNumStudents {
+  font-size: 14px;
+  font-weight: bold;
+}
+
+#edu-class-age-range {
+
+}
+
+#lblSelClassAgeRange {
+  font-size: 14px;
+  font-weight: bold;
+}
+
+#lblEducatorRole {
+  font-size: 14px;
+  font-weight: bold;
+  margin-left: 0px;
+}
+
+.stu-role {
+  margin-left: 30px;
+  display: none;
+}
+
+.stu-role label {
+  margin-left: 5px;
+  font-size: 14px;
+  // font-weight: normal;
+}
+
+#txtStudentRepresentingClassSize {
+  text-align: center;
+  width: 70px;
+  margin-left: 20px;
+}
+
+#selStudentClassAgeRange {
+  width: 150px;
+  margin-left: 20px;
+}

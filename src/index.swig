@@ -20,6 +20,9 @@
      - edit the following six tags. For more information, see the following blog post:
       (https://developerscorner.storymaps.arcgis.com/grow-your-story-maps-audience-with-open-graph-tags-b7639cb65d5c)
   -->
+
+  <script src="https://use.fontawesome.com/431a8f4589.js"></script>
+
   <title></title>
   <meta name="description" content="">
 
@@ -111,6 +114,17 @@
       width: 60px;
       margin: 20px;
 		}
+
+    .snapshot-generator {
+      display: block;
+      height: 1px;
+      left: 0;
+      object-fit: contain;
+      position: fixed;
+      top: 0;
+      width: 1px;
+      z-index: -1;
+    }
 	</style>
 
   <script type="text/javascript">

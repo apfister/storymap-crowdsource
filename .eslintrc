@@ -26,7 +26,7 @@
     "jsx-quotes": [2, "prefer-double"],
     "key-spacing": [2, {"beforeColon": false, "afterColon": true}],
     "max-nested-callbacks": [1, 2],
-    "new-cap": 2,
+    "new-cap": [2,{"capIsNewExceptions": ["$.Deferred"]}],
     "newline-after-var": [2, "always"],
     "no-alert": 1,
     "no-console": 1,

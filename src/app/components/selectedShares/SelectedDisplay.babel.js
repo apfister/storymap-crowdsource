@@ -1,6 +1,7 @@
 import React from 'react';
 import Helper from 'babel/utils/helper/Helper';
 import LazyImage from 'babel/components/helper/lazyImage/LazyImage';
+import VideoLoader from 'babel/components/helper/videoLoader/VideoLoader';
 import Autolinker from 'babel/components/helper/autolinker/Autolinker';
 import viewerText from 'i18n!translations/viewer/nls/template';
 import builderText from 'mode!isBuilder?i18n!translations/builder/nls/template';
@@ -126,6 +127,16 @@ export default class SelectedShares extends React.Component {
             layer: this.props.layer
           });
         }
+
+        // return (
+        //   <div className="media-section">
+        //     <VideoLoader
+        //       src={photoUrl}
+        //       onCanPlay={this.onMediaLoad.bind(this,true)}
+        //       onError={this.onMediaLoad.bind(this,false)}>
+        //     </VideoLoader>
+        //   </div>
+        // );
 
         return (
           <div className="media-section">

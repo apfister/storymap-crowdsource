@@ -6,7 +6,11 @@ import Input from 'babel/components/forms/input/Input';
 import Textarea from 'babel/components/forms/textarea/Textarea';
 import Location from 'babel/components/forms/location/Location';
 import Photo from 'babel/components/forms/photo/Photo';
+import Select from 'babel/components/forms/select/Select';
+import DynamicSelect from 'babel/components/forms/dynamicSelect/DynamicSelect';
 import TermsAndConditions from 'babel/components/forms/termsAndConditions/TermsAndConditions';
+import EducatorStudentRadio from 'babel/components/forms/educatorStudentRadio/EducatorStudentRadio';
+import YesNoRadio from 'babel/components/forms/yesnoradio/YesNoRadio';
 import ViewerText from 'i18n!translations/viewer/nls/template';
 import 'bootstrap/transition';
 
@@ -176,7 +180,7 @@ export default class CrowdsourceForm extends React.Component {
       }
     };
 
-    if (field.type === 'text' || field.type === 'textarea' || field.type === 'location') {
+    if (field.type === 'text' || field.type === 'textarea' || field.type === 'location' || field.type === 'select' || field.type === 'dynamic-select') {
       const maxLength = this.getFieldDefinitionValue(field.fieldID,'length');
       const options = {
         inputAttr: {
@@ -193,6 +197,14 @@ export default class CrowdsourceForm extends React.Component {
           return <Textarea {...settings}></Textarea>;
         case 'location':
           return <Location map={this.props.map} locationFromOtherSource={this.state.locationFromOtherSource} {...settings}></Location>;
+        case 'select':
+          settings.options = field.options || [];
+
+          return <Select {...settings}></Select>;
+        case 'dynamic-select':
+          settings.options = field.options || [];
+
+          return <DynamicSelect loadUrl={field.loadUrl} {...settings}></DynamicSelect>;
         default:
           return <Input {...settings}></Input>;
         }
@@ -204,6 +216,17 @@ export default class CrowdsourceForm extends React.Component {
       const settings = $.extend(true,{},defaults,options);
 
       return <Photo {...settings}></Photo>;
+    } else if (field.type === 'educator-student-radio'){
+      const options = {
+        options: field.options
+      };
+
+      const settings = $.extend(true,{},defaults,options);
+
+      settings.validations = [];
+
+      // return <EducatorStudentRadio {...settings}></EducatorStudentRadio>;
+      return <YesNoRadio {...settings}></YesNoRadio>;
     }
   }
 

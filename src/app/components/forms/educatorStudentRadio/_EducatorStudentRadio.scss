@@ -1,0 +1,52 @@
+.edu-selector input{
+    margin:0;padding:0;
+    -webkit-appearance:none;
+       -moz-appearance:none;
+            appearance:none;
+}
+
+.edu-student{
+  background-image:url(/resources/images/icons/noun_979170_cc_cropped.png);
+  background-size: 90px 90px;
+  background-repeat: no-repeat;
+  background-position-y: 30px;
+}
+.edu-educator{
+  background-image:url(/resources/images/icons/noun_690952_cc_cropped.png);
+  background-size: 90px 90px;
+  background-repeat: no-repeat;
+  background-position-y: 30px;
+}
+
+.edu-radio{
+  cursor:pointer;
+  background-size:contain;
+  background-repeat:no-repeat;
+  display:inline-block;
+  margin-right: 30px;
+  width:100px;height:70px;
+  -webkit-transition: all 100ms ease-in;
+  -moz-transition: all 100ms ease-in;
+   transition: all 100ms ease-in;
+  -webkit-filter: brightness(1.8) grayscale(1) opacity(.7);
+  -moz-filter: brightness(1.8) grayscale(1) opacity(.7);
+   filter: brightness(1.8) grayscale(1) opacity(.7);
+}
+.edu-radio:hover{
+  -webkit-filter: brightness(1.2) grayscale(.5) opacity(.9);
+  -moz-filter: brightness(1.2) grayscale(.5) opacity(.9);
+   filter: brightness(1.2) grayscale(.5) opacity(.9);
+}
+.holder {
+  padding: 0px 0px 0px 50px;
+  // display: flex;
+  // justify-content: space-around;
+  margin-bottom: 30px;
+  height: 125px;
+}
+.holder-label {
+  // margin-top: 10px;
+  // font-size: 14px;
+  text-align: center;
+  height: 120px;
+}
