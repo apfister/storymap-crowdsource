@@ -21,7 +21,8 @@
       (https://developerscorner.storymaps.arcgis.com/grow-your-story-maps-audience-with-open-graph-tags-b7639cb65d5c)
   -->
 
-  <script src="https://use.fontawesome.com/431a8f4589.js"></script>
+  <!-- <script src="https://use.fontawesome.com/431a8f4589.js"></script> -->
+  <link type="text/css" rel="stylesheet" href="resources/fonts/wll-living-archive/styles.css" />
 
   <title></title>
   <meta name="description" content="">

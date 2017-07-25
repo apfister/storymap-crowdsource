@@ -64,7 +64,7 @@ export default class Photo extends FormGroup {
             <br />
             {ViewerText.contribute.form.photo.pickFile}
             <label className="btn-file" tabIndex="-1" onBlur={this.onBlur}>
-              <input id={this.props.id} style={{display: 'none'}} type="file" tabIndex="-1" accept="image/*,video/*" capture={navigator.userAgent.match(/iPad|iPhone|iPod/g) ? 'camera' : false} onChange={this.fileChange}></input>
+              <input id={this.props.id} style={{display: 'none'}} type="file" tabIndex="-1" accept="image/*" capture={navigator.userAgent.match(/iPad|iPhone|iPod/g) ? 'camera' : false} onChange={this.fileChange}></input>
             </label>
           </div>
         ) : (
