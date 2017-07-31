@@ -2,6 +2,7 @@ import $ from 'jquery';
 import React from 'react';
 import ReactDOM from 'reactDom';
 import Helper from 'babel/utils/helper/Helper';
+import LiveStudentCount from 'babel/components/header/LiveStudentCount';
 import {getIcon} from 'babel/utils/helper/icons/IconGenerator';
 import ShareButtonPane from 'babel/components/helper/sharing/ShareButtonPane';
 import builderText from 'mode!isBuilder?i18n!translations/builder/nls/template';
@@ -68,7 +69,9 @@ export const Header = class Header extends React.Component {
             </a>
           )}
           <div className="title-cell cell fill-cell">
-            <h4 className="title" tabIndex="0" onClick={this.props.homeAction}>{this.props.title}</h4>
+            <h4 className="title" tabIndex="0" onClick={this.props.homeAction}>{this.props.title}
+              <LiveStudentCount summaryUrl={this.props.summaryUrl} ></LiveStudentCount>
+            </h4>
           </div>
           <ReactCSSTransitionGroup
             className="cell participate-cell"

@@ -25,7 +25,7 @@ export default class DynamicSelect extends FormGroup {
     super(props);
 
     this.state = {
-      remoteData: []
+      remoteData: [ { value: 'Loading ..', label: 'Loading ..'} ]
     };
   }
 

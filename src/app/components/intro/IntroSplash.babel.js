@@ -36,6 +36,10 @@ export const IntroSplash = class IntroSplash extends React.Component {
 
     let background;
 
+    const isMobile = window.mobileAndTabletcheck();
+
+    const foodOverlayImg = 'http://sdgs.maps.arcgis.com/sharing/rest/content/items/46af240e09044951bfa1203a261f8109/data';
+
     switch (this.props.background.type) {
       case 'photo':
         const backgroundUrl = Helper.attachmentUtils.checkForCredential({
@@ -56,6 +60,10 @@ export const IntroSplash = class IntroSplash extends React.Component {
             className="background-edit-button btn btn-primary btn-lg"
             dangerouslySetInnerHTML={{__html: getIcon('edit')}}></button>
         ) : null}
+        <div className={(isMobile) ? 'food-overlay-mobile' : 'food-overlay'} onClick={this.foodClick}>
+          <div className="food-overlay-txt">Take part in the 2017 Global Goals Food Project </div>
+          <img src={foodOverlayImg}/>
+        </div>
         {background}
         <InlineEditorWrapper
           className="title-pane background-fill"
@@ -73,6 +81,10 @@ export const IntroSplash = class IntroSplash extends React.Component {
       </div>
     );
 
+  }
+
+  foodClick() {
+    window.open('http://worldslargestlesson.globalgoals.org/healthy-not-hungry-food-projects-for-the-goals/');
   }
 
   getEditConfig(component) {
