@@ -40,7 +40,7 @@
 		//-------------------------------------------------------------------------------------------
 		var configOptions = {
 			// Enter an application ID created through the Crowdsource builder
-			appid: "",
+			appid: "98c3f61e426e43188812c9e844812671",
 			// Optionally to be able to use the appid URL parameter, configure here the list of application author
 			//  whose application are allowed to be viewed by this Crowdsource deployment
 			// This is the Portal username of the Crowdsource owner (e.g. ["user1"] or ["user1", "user2"])
@@ -125,6 +125,12 @@
       top: 0;
       width: 1px;
       z-index: -1;
+    }
+
+    /* change header bg color to white and text color to darker */
+    .sidePanel-default .main-app-header.header {
+      background-color: #ffffff;
+      color: #3e3d3e;
     }
 	</style>
 
