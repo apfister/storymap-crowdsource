@@ -5,6 +5,7 @@ import Loader from 'babel/components/helper/loading/Loader';
 import LazyImage from 'babel/components/helper/lazyImage/LazyImage';
 import InlineEditorWrapper from 'babel/components/forms/inlineEditor/InlineEditorWrapper';
 import builderText from 'mode!isBuilder?i18n!translations/builder/nls/template';
+import viewerText from 'i18n!translations/viewer/nls/template';
 
 const ReactCSSTransitionGroup = React.addons.CSSTransitionGroup;
 
@@ -15,6 +16,24 @@ export const IntroSplash = class IntroSplash extends React.Component {
   }
 
   render() {
+    const livingArchiveText = viewerText.livingArchive;
+
+    let title = this.props.title;
+
+    let subTitle = this.props.subtitle;
+
+    let exploreText = this.props.exploreText;
+
+    let pledgeText = this.props.pledgeText;
+
+    const pledgeUrl = this.props.pledgeUrl;
+
+    if (livingArchiveText) {
+      title = livingArchiveText.intro.title;
+      subTitle = livingArchiveText.intro.subtitle;
+      exploreText = livingArchiveText.intro.explore;
+      pledgeText = livingArchiveText.intro.pledgeText;
+    }
 
     const introClass = Helper.classnames([this.props.className, 'splash', {
       editing: this.props.editingAllowed
@@ -29,7 +48,7 @@ export const IntroSplash = class IntroSplash extends React.Component {
       addNotifications={this.props.addNotifications}
       removeNotifications={this.props.removeNotifications}>
         <button className="explore text-btn background-fill" inlineEditDisableActions="true" onClick={this.props.exploreAction}>
-          <p className="text inline-editable" inlineEditConfig={this.getEditConfig('exploreButton')}>{this.props.exploreText}</p>
+          <p className="text inline-editable" inlineEditConfig={this.getEditConfig('exploreButton')}>{exploreText}</p>
           <div className="icon-arrow-down" dangerouslySetInnerHTML={{__html: getIcon('arrow-down-open')}}></div>
         </button>
       </InlineEditorWrapper> : null;
@@ -38,7 +57,7 @@ export const IntroSplash = class IntroSplash extends React.Component {
 
     const isMobile = window.mobileAndTabletcheck();
 
-    const foodOverlayImg = 'http://sdgs.maps.arcgis.com/sharing/rest/content/items/46af240e09044951bfa1203a261f8109/data';
+    const foodOverlayImg = 'http://sdgs.maps.arcgis.com/sharing/rest/content/items/552af6c961a64d5ab5061497bd2fc0a1/data';
 
     switch (this.props.background.type) {
       case 'photo':
@@ -60,8 +79,8 @@ export const IntroSplash = class IntroSplash extends React.Component {
             className="background-edit-button btn btn-primary btn-lg"
             dangerouslySetInnerHTML={{__html: getIcon('edit')}}></button>
         ) : null}
-        <div className={(isMobile) ? 'food-overlay-mobile' : 'food-overlay'} onClick={this.foodClick}>
-          <div className="food-overlay-txt">Take part in the 2017 Global Goals Food Project </div>
+        <div className={(isMobile) ? 'food-overlay-mobile' : 'food-overlay'} onClick={() => this.foodClick(pledgeUrl) } >
+          <div className="food-overlay-txt">{pledgeText} </div>
           <img src={foodOverlayImg}/>
         </div>
         {background}
@@ -71,8 +90,9 @@ export const IntroSplash = class IntroSplash extends React.Component {
           component="div"
           addNotifications={this.props.addNotifications}
           removeNotifications={this.props.removeNotifications}>
-          <h1 className="title inline-editable" inlineEditConfig={this.getEditConfig('title')}>{this.props.title}</h1>
-          { this.props.editingAllowed || (this.props.subtitle && typeof this.props.subtitle === 'string' && this.props.subtitle.length > 0) ? <h2 className="subtitle serif-face inline-editable" inlineEditConfig={this.getEditConfig('subtitle')}>{this.props.subtitle}</h2> : null }
+          {/* <h1 className="title inline-editable" inlineEditConfig={this.getEditConfig('title')}>{this.props.title}</h1> */}
+          <h1 className="title inline-editable" inlineEditConfig={this.getEditConfig('title')}>{title}</h1>
+          { this.props.editingAllowed || (this.props.subtitle && typeof this.props.subtitle === 'string' && this.props.subtitle.length > 0) ? <h2 className="subtitle serif-face inline-editable" inlineEditConfig={this.getEditConfig('subtitle')}>{subTitle}</h2> : null }
         </InlineEditorWrapper>
         <ReactCSSTransitionGroup component="div" className="action-buttons" transitionName="wait-for-action" transitionEnterTimeout={1000} transitionLeaveTimeout={1000} >
           {loader}
@@ -83,8 +103,8 @@ export const IntroSplash = class IntroSplash extends React.Component {
 
   }
 
-  foodClick() {
-    window.open('http://worldslargestlesson.globalgoals.org/healthy-not-hungry-food-projects-for-the-goals/');
+  foodClick(url) {
+    window.open(url);
   }
 
   getEditConfig(component) {

@@ -1,5 +1,6 @@
 import React from 'react';
 import esriRequest from 'esri/request';
+import viewerText from 'i18n!translations/viewer/nls/template';
 
 export const LiveStudentCount = class LiveStudentCount extends React.Component {
 
@@ -44,11 +45,20 @@ export const LiveStudentCount = class LiveStudentCount extends React.Component {
   }
 
   render() {
+
+    const livingArchiveText = viewerText.livingArchive;
+
+    let studentParticipantText = 'Students participating';
+
+    if (livingArchiveText) {
+      studentParticipantText = livingArchiveText.header.studentCount;
+    }
+
     return (
       <div className="row live-count">
         <div className="col-xs-12">
           <span className="live-count-value">{this.liveStudentCount}</span>
-          <span className="live-count-label">students taught</span>
+          <span className="live-count-label">{studentParticipantText}</span>
         </div>
 
       </div>

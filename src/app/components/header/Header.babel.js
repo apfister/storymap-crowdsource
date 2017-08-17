@@ -6,6 +6,8 @@ import LiveStudentCount from 'babel/components/header/LiveStudentCount';
 import {getIcon} from 'babel/utils/helper/icons/IconGenerator';
 import ShareButtonPane from 'babel/components/helper/sharing/ShareButtonPane';
 import builderText from 'mode!isBuilder?i18n!translations/builder/nls/template';
+import viewerText from 'i18n!translations/viewer/nls/template';
+
 import 'bootstrap/tooltip';
 import 'bootstrap/transition';
 
@@ -38,6 +40,17 @@ export const Header = class Header extends React.Component {
 
   render() {
 
+    const livingArchiveText = viewerText.livingArchive;
+
+    let storyTitle = this.props.title;
+
+    let participateShort = this.props.participateShort;
+
+    if (livingArchiveText) {
+      storyTitle = livingArchiveText.header.title;
+      participateShort = livingArchiveText.header.becomePart;
+    }
+
     const headerClass = Helper.classnames([this.props.className, 'header', 'navbar', 'main-app-header']);
     const participateIconHtml = {
       __html: getIcon('participate')
@@ -47,7 +60,7 @@ export const Header = class Header extends React.Component {
           disabled: this.props.participationButtonDisabled
         })} onClick={this.participateAction}>
         <span className="icon" dangerouslySetInnerHTML={participateIconHtml}></span>
-        <span className="text">{this.props.participateShort}</span>
+        <span className="text">{participateShort}</span>
       </button>
     ) : null;
 
@@ -69,7 +82,7 @@ export const Header = class Header extends React.Component {
             </a>
           )}
           <div className="title-cell cell fill-cell">
-            <h4 className="title" tabIndex="0" onClick={this.props.homeAction}>{this.props.title}
+            <h4 className="title" tabIndex="0" onClick={this.props.homeAction}>{storyTitle}
               <LiveStudentCount summaryUrl={this.props.summaryUrl} ></LiveStudentCount>
             </h4>
           </div>

@@ -44,7 +44,7 @@ export default class SelectedShares extends React.Component {
               <div className="review-section alert alert-danger">
                 {viewerText.errors.selectedDisplay.noPhoto}
               </div>
-              <h4 className="share-title">{attributes[this.props.primaryField]}</h4>
+              {/* <h4 className="share-title">{attributes[this.props.primaryField]}</h4> */}
               <p className="share-location-wrapper"><small className="share-location">{attributes[this.props.secondaryField]}</small></p>
             { this.props.displayOrder.map(this.getFieldLayout.bind(this,attributes))}
             </div>
@@ -67,8 +67,9 @@ export default class SelectedShares extends React.Component {
           ) : (
           <div className="padded-column">
           <div className="info-section">
-            <h4 className="share-title">{attributes[this.props.primaryField]}</h4>
+            {/* <h4 className="share-title">{attributes[this.props.primaryField]}</h4> */}
             <p className="share-location-wrapper"><small className="share-location">{attributes[this.props.secondaryField]}</small></p>
+            <hr />
           { this.props.displayOrder.map(this.getFieldLayout.bind(this,attributes))}
           </div>
           {this.props.reviewEnabled ? (
@@ -165,9 +166,40 @@ export default class SelectedShares extends React.Component {
         const fieldClasses = Helper.classnames(['field-display', 'field-' + current]);
         const fieldProps = this.props.fields[current];
 
-        if (fieldProps && fieldProps.type === 'textarea') {
+        if (fieldProps && (fieldProps.type === 'textarea' || fieldProps.type === 'text') ) {
+
+          if (current === 'OPEN_INPUT_CONNECT_TWITTER') {
+            let txt = attributes[current];
+
+            if (txt && txt !== '') {
+              txt = `<p style="font-size:smaller;margin-bottom: 2px;color: rgba(102, 102, 102, 0.6);">Connect with us on Twitter</p> ${txt}`;
+            }
+
+            return (<Autolinker key={current} className={fieldClasses} text={txt}></Autolinker>);
+
+          } else if (current === 'OPEN_INPUT_SHARE') {
+            let txt = attributes[current];
+
+            if (txt && txt !== '') {
+              txt = `<p style="font-size:smaller;margin-bottom: 2px;color: rgba(102, 102, 102, 0.6);">I'd like to share</p> ${txt}`;
+            }
+
+            return (<Autolinker key={current} className={fieldClasses} text={txt}></Autolinker>);
+
+          }
+
           return (<Autolinker key={current} className={fieldClasses} text={attributes[current]}></Autolinker>);
         } else {
+          if (current === 'LESSON_SDG_GOAL') {
+            let txt = attributes[current];
+
+            if (txt && txt !== '') {
+              txt = `<p style="font-size:smaller;margin-bottom: 2px;color: rgba(102, 102, 102, 0.6);">Our Lesson was about</p> ${txt}`;
+            }
+
+            return (<Autolinker key={current} className={fieldClasses} text={txt}></Autolinker>);
+          }
+
           return (<p key={current} className={fieldClasses}>{attributes[current]}</p>);
         }
       }

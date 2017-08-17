@@ -534,7 +534,8 @@ Viewer.propTypes = {
         source: React.PropTypes.string
       }),
       title: React.PropTypes.string,
-      subtitle: React.PropTypes.string
+      subtitle: React.PropTypes.string,
+      pledgeText: React.PropTypes.string
     }),
     map: React.PropTypes.shape({
       crowdsourceLayer: React.PropTypes.shape({

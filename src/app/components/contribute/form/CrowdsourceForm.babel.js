@@ -213,7 +213,8 @@ export default class CrowdsourceForm extends React.Component {
         placeholder: field.placeholder
       };
 
-      const settings = $.extend(true,{},defaults,options);
+      // const settings = $.extend(true,{},defaults,options);
+      const settings = $.extend(true,{},defaults,options, {showShareFlipGrid: field.showShareFlipGrid});
 
       return <Photo {...settings}></Photo>;
     } else if (field.type === 'educator-student-radio'){

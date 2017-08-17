@@ -11,7 +11,8 @@
     "objectLiteralShorthandProperties": true,
     "spread": true,
     "defaultParams": true,
-    "destructuring": true
+    "destructuring": true,
+    "templateStrings": true
   },
   "rules": {
     "accessor-pairs": 2,

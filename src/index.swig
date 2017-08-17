@@ -116,6 +116,15 @@
       margin: 20px;
 		}
 
+    /* override for bg image. push it down a little bit*/
+    .background-image.lazy-image.loaded {
+      background-position-y: 55px !important;
+    }
+
+    .explore.text-btn.background-fill {
+      background-color: rgba(229, 229, 229, 1);
+    }
+
     .snapshot-generator {
       display: block;
       height: 1px;
@@ -142,7 +151,7 @@
       text-align: center;
     }
     .food-overlay-txt {
-      background-color: rgba(229, 229, 229, 0.7);
+      background-color: rgba(229, 229, 229, 0.85);
       padding: 10px;
       border-radius: 10px;
       margin-bottom: 5px;
@@ -150,9 +159,13 @@
     }
 
     .food-overlay img {
-      height: 200px;
-      border-radius: 10px;
+      height: 167px;
       cursor: pointer;
+      background-color: rgba(229, 229, 229, 0.85);
+      padding: 10px;
+      border-radius: 10px;
+      margin-bottom: 5px;
+      font-weight: bold;
     }
 
     .food-overlay-mobile img {

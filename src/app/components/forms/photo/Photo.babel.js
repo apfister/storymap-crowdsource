@@ -78,6 +78,10 @@ export default class Photo extends FormGroup {
             <small>{ ViewerText.forms.photo.loading }</small>
           </p>
         ) : null }
+        { this.props.showShareFlipGrid ? (
+          <p>To share your voice in video go to our <a href="https://flipgrid.com/globalvoice" target="_blank">flipgrid</a></p>
+        )
+          : null }
       </div>
     );
 
