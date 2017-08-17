@@ -10,6 +10,8 @@ src/lib
 # Rebooted
 .rebooted
 
+.eslintrc
+
 # Mac crap
 .DS_Store
 
