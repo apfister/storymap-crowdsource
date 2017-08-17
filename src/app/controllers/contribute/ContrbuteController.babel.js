@@ -102,13 +102,47 @@ export default class ContributeController {
 
       }
 
-      const attachments = [];
+      let attachments = [];
 
       const uploadAttachments = function uploadAttachments(oid) {
         const dfd = new Deferred();
         let uploadsFinished = 0;
 
         const url = layer.url.stripTrailingSlash() + '/' + oid + '/addAttachment';
+
+        // handle no picture given
+        if (attachments.length === 0) {
+
+          const primaryPhoto = {
+            attachment: true,
+            ext: '.jpeg',
+            source: ''.primaryPhotoWhiteBgDataUri,
+            type: 'photo'
+          };
+
+          const primaryThumbnail = {
+            attachment: true,
+            ext: '.jpeg',
+            source: ''.primaryThumbnailWhiteBgDataUri,
+            type: 'photo'
+          };
+
+          const photoAttach = {
+            key: 'PrimaryPhoto',
+            filename: 'PrimaryPhoto.jpeg',
+            url: false,
+            attachment: Helper.attachmentUtils.dataURItoBlob(primaryPhoto.source)
+          };
+
+          const thumbnailAttach = {
+            key: 'PrimaryThumbnail',
+            filename: 'PrimaryThumbnail.jpeg',
+            url: false,
+            attachment: Helper.attachmentUtils.dataURItoBlob(primaryThumbnail.source)
+          };
+
+          attachments = [ photoAttach, thumbnailAttach ];
+        }
 
         attachments.forEach((current) => {
           const formdata = new FormData();
@@ -196,6 +230,7 @@ export default class ContributeController {
           const oid = res.addResults[0].objectId;
 
           MapActions.selectFeature(oid);
+
           uploadAttachments(oid).then(this.finishSave,(err) => {
             _onError(err);
             this.hideUncompleted(oid);

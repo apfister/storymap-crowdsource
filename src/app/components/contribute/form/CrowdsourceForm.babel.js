@@ -216,6 +216,8 @@ export default class CrowdsourceForm extends React.Component {
       // const settings = $.extend(true,{},defaults,options);
       const settings = $.extend(true,{},defaults,options, {showShareFlipGrid: field.showShareFlipGrid});
 
+      settings.validations = [];
+
       return <Photo {...settings}></Photo>;
     } else if (field.type === 'educator-student-radio'){
       const options = {
@@ -246,8 +248,12 @@ export default class CrowdsourceForm extends React.Component {
     this.formItemStatus[item] = valid;
 
     Object.keys(this.formItemStatus).forEach((current) => {
-      if (!this.formItemStatus[current]) {
-        formValid = false;
+      if (current !== 'PrimaryPhoto') {
+
+        if (!this.formItemStatus[current]) {
+          formValid = false;
+        }
+        
       }
     });
 
