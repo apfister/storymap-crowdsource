@@ -40,7 +40,13 @@
 		//-------------------------------------------------------------------------------------------
 		var configOptions = {
 			// Enter an application ID created through the Crowdsource builder
-			appid: "98c3f61e426e43188812c9e844812671",
+
+      // sdgs org site
+			// appid: "98c3f61e426e43188812c9e844812671",
+
+      // wll org site
+      appid: "065461d6f4854aa6a19fa1829465e3b2",
+      
 			// Optionally to be able to use the appid URL parameter, configure here the list of application author
 			//  whose application are allowed to be viewed by this Crowdsource deployment
 			// This is the Portal username of the Crowdsource owner (e.g. ["user1"] or ["user1", "user2"])
@@ -123,6 +129,11 @@
 
     .explore.text-btn.background-fill {
       background-color: rgba(229, 229, 229, 1);
+    }
+
+    .participate.btn {
+      background-color: #f49600;
+      border-color: orange;
     }
 
     .snapshot-generator {

@@ -20,14 +20,6 @@ const _onError = function onError(error) {
   });
 };
 
-// const _onStatus = function onStatus(message,debugOnly) {
-//   _logger.logMessage({
-//     type: 'status',
-//     debugOnly,
-//     message
-//   });
-// };
-
 export default class ContributeController {
 
   constructor() {
@@ -116,14 +108,14 @@ export default class ContributeController {
           const primaryPhoto = {
             attachment: true,
             ext: '.jpeg',
-            source: ''.primaryPhotoWhiteBgDataUri,
+            source: ''.primaryPhotoBookOnly,
             type: 'photo'
           };
 
           const primaryThumbnail = {
             attachment: true,
             ext: '.jpeg',
-            source: ''.primaryThumbnailWhiteBgDataUri,
+            source: ''.primaryThumbnailBookOnly,
             type: 'photo'
           };
 

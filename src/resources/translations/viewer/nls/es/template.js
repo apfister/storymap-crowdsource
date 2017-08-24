@@ -200,6 +200,9 @@ define({
       "subtitle": "Póngase en el mapa y convertirse en parte de la historia uniendo a una generación para cambiar el mundo en 2030",
       "explore": "Explora el mapa",
       "pledgeText" : "Tome la promesa de ser \"Be Fearless Be Kind\""
+    },
+    "form": {
+      "title": "Mettez la plus grande leçon de votre monde sur la carte"
     }
   }
 });

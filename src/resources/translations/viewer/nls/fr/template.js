@@ -1,192 +1,192 @@
 define({
   "loading": {
-    "general": "Cargando",
-    "initializing": "Cargando historia",
-    "map": "Cargando mapa"
+    "general": "Chargement",
+    "initializing": "Chargement du récit",
+    "map": "Chargement de la carte"
   },
   "common": {
-    "or": "o",
+    "or": "ou",
     "appNamePrepend": "Story Map",
     "appName": "Crowdsource",
     "buttons": {
-      "save": "Guardar",
-      "saving": "Guardando",
-      "close": "Cerrar"
+      "save": "Enregistrer",
+      "saving": "Enregistrement",
+      "close": "Fermer"
     }
   },
   "banner": {
     "buttons": {
-      "edit": "Editar historia",
-      "hide": "Ocultar"
+      "edit": "Mettre à jour le récit",
+      "hide": "Masquer"
     }
   },
   "sharing": {
     "buttonTitleAttr": {
-      "facebook": "Compartir en Facebook",
-      "twitter": "Compartir en Twitter",
-      "link": "Obtener código integrado o copiar un vínculo corto"
+      "facebook": "Partager sur Facebook",
+      "twitter": "Partager sur Twitter",
+      "link": "Obtenir le code incorporé ou copier un lien court"
     },
     "link": {
-      "title": "Compartir",
-      "copied": "Copiado",
-      "linkHeader": "Vínculo a la historia",
-      "linkHelper": "Comparta esta historia por correo electrónico o en las redes sociales con el vínculo siguiente.",
-      "copyShortLink": "Copiar vínculo corto",
-      "showShortLink": "Mostrar vínculo corto",
-      "copyFullLink": "Copiar dirección URL completa",
-      "showFullLink": "Mostrar vínculo completo",
-      "embedSizeHelper": "Tamaño (ancho/alto)",
-      "embedCodeHeader": "Integrar en el sitio web",
-      "embedCodeHelper": "Use el siguiente código HTML para integrar la historia en una página web.",
-      "copyEmbedCode": "Copiar código integrado"
+      "title": "Partager",
+      "copied": "Copié",
+      "linkHeader": "Lien vers le récit",
+      "linkHelper": "Partagez ce récit par e-mail ou sur les réseaux sociaux en cliquant sur le lien ci-après.",
+      "copyShortLink": "Copier un lien court",
+      "showShortLink": "Afficher un lien court",
+      "copyFullLink": "Copier l’URL complète",
+      "showFullLink": "Afficher le lien complet",
+      "embedSizeHelper": "Taille (largeur/hauteur)",
+      "embedCodeHeader": "Incorporer dans un site web",
+      "embedCodeHelper": "Utilisez le code HTML suivant pour incorporer le récit dans une page web.",
+      "copyEmbedCode": "Copier le code incorporé"
     }
   },
   "layouts": {
     "stacked": {
       "changeView": {
-        "mapView": "Ver mapa",
-        "galleryView": "Ver galería"
+        "mapView": "Afficher la carte",
+        "galleryView": "Afficher la galerie"
       }
     }
   },
   "mobile": {
     "bottomNav": {
-      "home": "Inicio",
-      "map": "Mapa",
-      "gallery": "Galería",
-      "participate": "Participar"
+      "home": "Accueil",
+      "map": "Carte",
+      "gallery": "Bibliothèque",
+      "participate": "Participer"
     }
   },
   "forms": {
     "select": {
-      "noDefaultSelection": "Elija una opción..."
+      "noDefaultSelection": "Choisissez une option..."
     },
     "photo": {
-      "loading": "Cargando foto",
-      "resizing": "Ajustando tamaño de foto"
+      "loading": "Chargement de la photo",
+      "resizing": "Redimensionnement de la photo"
     }
   },
   "map": {
     "controls": {
-      "homeButton": "Ir a la ubicación de inicio"
+      "homeButton": "Accéder à l'emplacement d’accueil"
     }
   },
   "selectedShares": {
-    "enlargePhotoButton": "Ver más grande",
+    "enlargePhotoButton": "Agrandir",
     "review": {
-      "title": "Revisar elemento",
+      "title": "Vérifier l’élément",
       "options": {
-        "approve": "Aprobar",
-        "reject": "Rechazar"
+        "approve": "Approuver",
+        "reject": "Refuser"
       }
     }
   },
   "contribute": {
     "login": {
-      "title": "Iniciar sesión",
+      "title": "Se connecter",
       "services": {
-        "arcgis": "Iniciar sesión con ArcGIS",
-        "facebook": "Iniciar sesión con Facebook",
-        "google": "Iniciar sesión con Google",
-        "guest": "Continuar como invitado"
+        "arcgis": "Se connecter avec ArcGIS",
+        "facebook": "Se connecter avec Facebook",
+        "google": "Se connecter avec Google",
+        "guest": "Continuer comme invité"
       },
-      "loginDescription": "Para participar, use una de las opciones anteriores.",
-      "loginDescriptionSingle": "Para participar, use la opción anterior."
+      "loginDescription": "Pour participer, utilisez l’une des options ci-dessus.",
+      "loginDescriptionSingle": "Pour participer, utilisez l’option ci-dessus."
     },
     "form": {
       "photo": {
-        "pickFile": "Haga clic para seleccionar un archivo",
-        "choosePhoto": "Cargar una foto",
-        "selectNew": "Usar una foto diferente",
-        "photoTooSmall": "La foto es demasiado pequeña. El lado más pequeño debe tener al menos"
+        "pickFile": "Cliquez ici pour choisir un fichier",
+        "choosePhoto": "Télécharger une photo",
+        "selectNew": "Utiliser une photo différente",
+        "photoTooSmall": "Votre photo est trop petite. Le côté le plus petit doit mesurer au moins"
       },
       "location": {
-        "gettingLocation": "Localizando",
-        "locate": "Localizarme",
-        "findOnMap": "Buscar en el mapa",
-        "findOnMapTooltip": "Haga clic en el mapa o arrastre este punto para precisar su ubicación.",
-        "saveLocation": "Guardar ubicación",
-        "search": "Buscar",
-        "longitude": "Longitud",
-        "latitude": "Latitud",
-        "nullIsland": "Null Island",
-        "photoLocation": "¿Desea usar la ubicación en la que se tomó la foto?"
+        "gettingLocation": "Localisation",
+        "locate": "Localiser mon emplacement",
+        "findOnMap": "Rechercher sur la carte",
+        "findOnMapTooltip": "Cliquez sur la carte ou faites glisser ce point pour préciser votre emplacement.",
+        "saveLocation": "Enregistrer l’emplacement",
+        "search": "Rechercher",
+        "longitude": "Longitude",
+        "latitude": "Latitude",
+        "nullIsland": "Ilot Null",
+        "photoLocation": "Voulez-vous utiliser l’emplacement où votre photo a été prise ?"
       },
       "termsAndConditions": {
-        "buttonShow": "Mostrar términos y condiciones",
-        "buttonHide": "Ocultar términos y condiciones"
+        "buttonShow": "Afficher les conditions d'utilisation",
+        "buttonHide": "Masquer les conditions d'utilisation"
       },
-      "save": "Aceptar términos y enviar",
-      "saving": "Enviando",
-      "requiredWarning": "Campos requeridos",
-      "changedCloseWarning": "¿Está seguro de que desea cerrar? Los cambios se perderán."
+      "save": "Accepter les conditions et envoyer",
+      "saving": "Envoi",
+      "requiredWarning": "Champs requis",
+      "changedCloseWarning": "Vouez-vous vraiment fermer ? Vos modifications seront perdues."
     },
     "messages": {
       "contributionShownAfterReview": {
-        "title": "Gracias por participar.",
-        "body": "Su contribución se ha enviado y aparecerá en el mapa cuando se haya revisado y aprobado. Vuelva a comprobarlo más tarde.",
-        "confirmBtn": "Aceptar"
+        "title": "Merci de votre participation.",
+        "body": "Votre contribution a été envoyée. Elle s’affichera sur la carte lorsqu’elle aura été vérifiée et approuvée. Vérifiez à nouveau ultérieurement.",
+        "confirmBtn": "OK"
       },
       "contributionError": {
-        "title": "Atención",
-        "body": "Se ha producido un error desconocido y su error no se ha podido guardar. Actualice el navegador y vuelva a intentarlo.",
-        "confirmBtn": "Aceptar"
+        "title": "Attention",
+        "body": "Une erreur inconnue s’est produite et votre contribution n’a pas pu être enregistrée. Actualisez votre navigateur et essayez à nouveau.",
+        "confirmBtn": "OK"
       }
     }
   },
   "validations": {
-    "fix": "Solucionar",
+    "fix": "Corriger !",
     "basic": {
-      "noValue": "No se ha proporcionado ningún valor",
-      "required": "Se necesita un <% attribute %>.",
-      "regex": "El <% attribute %> no coincide con el patrón requerido.",
+      "noValue": "Aucune valeur n’a été fournie",
+      "required": "Un <% attribute %> est requis.",
+      "regex": "L’<% attribute %> ne correspond pas au modèle requis.",
       "max": {
-        "string": "El <% attribute %> no puede contener más de <% max %> caracteres.",
-        "number": "El <% attribute %> debe ser menor o igual a <% max %>."
+        "string": "L’<% attribute %> ne peut pas contenir plus de <% max %> caractères.",
+        "number": "L’<% attribute %> doit être inférieur ou égal à <% max %>."
       },
-      "acceptedTerms": "Debe aceptar los términos y condiciones antes de compartir.",
-      "https": "El <% attribute %> se debe cargar a través de una conexión segura. La dirección URL debe empezar con \"https://\" o \"//\" para que se cargue correctamente.",
-      "imageUrl": "El <% attribute %> debe ser una dirección URL de imagen válida. En la mayoría de los casos, la dirección URL terminará con una extensión \".jpg\", \".gif\", o \".png\"."
+      "acceptedTerms": "Vous devez accepter les conditions d’utilisation avant de partager.",
+      "https": "L’<% attribute %> doit être chargé via une connexion sécurisée. L’URL doit commencer par « https:// » ou « // » pour que le chargement soit correct.",
+      "imageUrl": "L’<% attribute %> doit être une URL d’image valide. Dans la plupart des cas, l’URL termine par une extension « .jpg », « .gif » ou « .png »."
     },
     "pattern": {
-      "commaSeparated": "El <% attribute %> no puede contener ningún espacio.",
-      "noNewLine": "El <% attribute %> no puede contener saltos de línea"
+      "commaSeparated": "L’<% attribute %> ne peut pas contenir d’espaces.",
+      "noNewLine": "L’<% attribute %> ne peut pas contenir de sauts de ligne."
     },
     "arcgis": {
       "basic": {
-        "arcgisSupportedHtml": "El <% attribute %> contiene HTML no compatible."
+        "arcgisSupportedHtml": "L’<% attribute %> contient du HTML non pris en charge."
       },
       "location": {
-        "notValid": "La ubicación que ha introducido no es válida. Vuelva a intentarlo.",
-        "noResults": "La ubicación que ha buscado no se puede encontrar. Vuelva a intentarlo y sea lo más concreto posible."
+        "notValid": "L’emplacement que vous avez saisi n’est pas valide, essayez à nouveau.",
+        "noResults": "L’emplacement recherché est introuvable. Essayez à nouveau en étant aussi précis que possible."
       }
     }
   },
   "errors": {
     "actionsBtns": {
-      "startFromScratch": "Empezar a crear una nueva historia de Crowdsource"
+      "startFromScratch": "Commencer à créer un nouveau récit Crowdsource"
     },
     "loading": {
-      "heading": "Atención",
-      "invalidConfig": "Configuración no válida",
-      "inaccessibleApp": "La aplicación de representación cartográfica en la red no existe o es inaccesible.",
-      "invalidConfigNoApp": "No se ha especificado un Id. válido de la aplicación de representación cartográfica en la red en el archivo index.html o en la dirección URL de la aplicación. Corrija el appid y vuelva a intentarlo.",
-      "unspecifiedConfigOwner": "El propietario autorizado no se ha configurado.",
-      "invalidConfigOwner": "El propietario de la historia no está autorizado.",
-      "createMap": "No se puede crear el mapa",
-      "notAuthorizedApp": "No tiene autorización para acceder a esta historia",
-      "notAuthorizedMap": "No tiene autorización para acceder al mapa web de esta historia",
-      "notAuthorizedLayers": "No tiene autorización para ver una o varias capas del mapa web",
-      "upgradeBrowser": "<a href=\"http://browsehappy.com/\" target=\"_blank\">Actualice el navegador</a>.",
-      "mapLoadingFail": "Se ha producido un error, el mapa no se ha cargado correctamente.",
-      "appLoadingFail": "Se ha producido un error, la aplicación no se ha cargado correctamente.",
-      "crowdsourceLayerNotFound": "Se ha producido un error, la historia no puede encontrar o cargar la capa de mapa de Crowdsource correctamente."
+      "heading": "Attention",
+      "invalidConfig": "Configuration non valide",
+      "inaccessibleApp": "L’application de cartographie web n'existe pas ou est inaccessible.",
+      "invalidConfigNoApp": "Aucun ID d’application de cartographie web n’est précisé dans le fichier index.html de l’application ou l’URL. Corrigez l’appid et essayez à nouveau.",
+      "unspecifiedConfigOwner": "Le propriétaire autorisé n'est pas configuré.",
+      "invalidConfigOwner": "Le propriétaire du récit n'est pas autorisé.",
+      "createMap": "Impossible de créer la carte",
+      "notAuthorizedApp": "Vous n'êtes pas autorisé à accéder à ce récit.",
+      "notAuthorizedMap": "Vous n'êtes pas autorisé à accéder à la carte web dans ce récit.",
+      "notAuthorizedLayers": "Vous n'êtes pas autorisé à afficher une ou plusieurs couches dans la carte web",
+      "upgradeBrowser": "<a href=\"http://browsehappy.com/\" target=\"_blank\">Mettez à jour votre navigateur</a>.",
+      "mapLoadingFail": "Une erreur s'est produite et la carte n'a pas été chargée correctement.",
+      "appLoadingFail": "Une erreur s'est produite et l’application n'a pas été chargée correctement.",
+      "crowdsourceLayerNotFound": "Une erreur s'est produite, le récit n’a pas trouvé ou chargé la couche de carte Crowdsource correctement."
     },
     "sharing": {
-      "localhost": "Las direcciones URL con \"localhost\" no se pueden compartir."
+      "localhost": "Les URL avec « localhost » ne peuvent pas être partagées."
     },
     "selectedDisplay": {
-      "noPhoto": "Error: la foto no existe o es inaccesible."
+      "noPhoto": "Erreur : la photo n'existe pas ou est inaccessible."
     }
   },
   "livingArchive": {
@@ -200,6 +200,19 @@ define({
       "subtitle": "Mettez-vous sur la carte et faites partie de l'histoire réunissant une génération pour changer le monde d'ici 2030",
       "explore": "Explorez la carte",
       "pledgeText" : "Prenez le gage \"Soyez sans peur Être gentil\""
+    },
+    "form": {
+      "title": "Pon tu lección más grande del mundo en el mapa",
+      "fields": {
+        "PrimaryPhoto": {
+          "label": "Photo de votre leçon",
+          "placeholder": "Glisser déposer"
+        },
+        "LocationName":{
+          "label": "Mon emplacement est",
+          "placeholder": "Entrez un lieu"
+        }
+      }
     }
   }
 });

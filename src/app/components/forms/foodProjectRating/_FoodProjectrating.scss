@@ -1,0 +1,83 @@
+.fp-selector input {
+  margin: 0;
+  padding: 0;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+.fp-one {
+  background-image: url(/resources/images/food-icons/1.png);
+}
+
+.fp-two {
+  background-image: url(/resources/images/food-icons/2.png);
+}
+
+.fp-three {
+  background-image: url(/resources/images/food-icons/3.png);
+}
+
+.fp-four {
+  background-image: url(/resources/images/food-icons/4.png);
+}
+
+.fp-five {
+  background-image: url(/resources/images/food-icons/5.png);
+}
+
+.fp-selector input:active +.score-fp {
+  // opacity: .9;
+}
+
+.fp-selector input:checked +.score-fp {
+  -webkit-filter: none;
+  -moz-filter: none;
+  filter: none;
+  opacity: 1;
+}
+
+.score-fp-holder {
+  display: inline;
+  cursor: pointer;
+}
+
+.score-fp {
+  cursor: pointer;
+  background-size: contain;
+  background-repeat: no-repeat;
+  display: inline-block;
+  width: 55px;
+  height: 50px;
+  opacity: 0.25;
+  -webkit-transition: all 100ms ease-in;
+  -moz-transition: all 100ms ease-in;
+  transition: all 100ms ease-in;
+  // -webkit-filter: brightness(1.8) grayscale(1) opacity(.7);
+  // -moz-filter: brightness(1.8) grayscale(1) opacity(.7);
+  // filter: brightness(1.8) grayscale(1) opacity(.7);
+}
+
+.score-fp:hover {
+  // -webkit-filter: brightness(1.2) grayscale(.5) opacity(.9);
+  // -moz-filter: brightness(1.2) grayscale(.5) opacity(.9);
+  // filter: brightness(1.2) grayscale(.5) opacity(.9);
+  opacity: 1;
+}
+
+
+/* Extras */
+// .fp-selector {
+//   a:visited {
+//     color: #888
+//   }
+//
+//   a {
+//     color: #444;
+//     text-decoration: none;
+//   }
+//
+//   p {
+//     margin-bottom: .3em;
+//   }
+// }

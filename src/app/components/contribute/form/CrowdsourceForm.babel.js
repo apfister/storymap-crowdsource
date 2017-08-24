@@ -11,6 +11,7 @@ import DynamicSelect from 'babel/components/forms/dynamicSelect/DynamicSelect';
 import TermsAndConditions from 'babel/components/forms/termsAndConditions/TermsAndConditions';
 import EducatorStudentRadio from 'babel/components/forms/educatorStudentRadio/EducatorStudentRadio';
 import YesNoRadio from 'babel/components/forms/yesnoradio/YesNoRadio';
+import FoodProjectRating from 'babel/components/forms/foodProjectRating/FoodProjectRating';
 import ViewerText from 'i18n!translations/viewer/nls/template';
 import 'bootstrap/transition';
 
@@ -60,6 +61,14 @@ export default class CrowdsourceForm extends React.Component {
 
     const closeBtnClasses = Helper.classnames(['btn','btn-primary','btn-block','close-btn']);
 
+    const livingArchiveNls = ViewerText.livingArchive;
+
+    let formTitle = this.props.title;
+
+    if (livingArchiveNls) {
+      formTitle = livingArchiveNls.form.title || this.props.title;
+    }
+
     return (
       <div className="row">
         <div className="close-button-wrapper">
@@ -68,7 +77,7 @@ export default class CrowdsourceForm extends React.Component {
           </button>
         </div>
         <div className="col-xs-12">
-          <h3 className="form-title">{this.props.title}</h3>
+          <h3 className="form-title">{formTitle}</h3>
           <form onSubmit={(e) => {
               e.preventDefault();
             }}>
@@ -127,13 +136,26 @@ export default class CrowdsourceForm extends React.Component {
       this.formItemStatus[field.fieldID] = false;
     }
 
+    let fieldLabel = field.label;
+
+    let fieldPlaceholder = field.placeholder;
+
+    const livingArchiveNls = ViewerText.livingArchive;
+
+    if (livingArchiveNls) {
+      if (livingArchiveNls.form.fields[field.fieldID]) {
+          fieldLabel = livingArchiveNls.form.fields[field.fieldID].label;
+          fieldPlaceholder = livingArchiveNls.form.fields[field.fieldID].placeholder;
+      }
+    }
+
     const defaults = {
       contributing: true,
       required: field.required,
       formId: this._formId,
       id: field.fieldID,
       key: index,
-      label: field.label,
+      label: fieldLabel,
       attribute: field.attributeName,
       validations: field.validations,
       extras: field.extras,
@@ -185,7 +207,7 @@ export default class CrowdsourceForm extends React.Component {
       const options = {
         inputAttr: {
           type: field.type,
-          placeholder: field.placeholder,
+          placeholder: fieldPlaceholder,
           maxLength
         }
       };
@@ -210,7 +232,7 @@ export default class CrowdsourceForm extends React.Component {
         }
     } else if (field.type === 'photo') {
       const options = {
-        placeholder: field.placeholder
+        placeholder: fieldPlaceholder
       };
 
       // const settings = $.extend(true,{},defaults,options);
@@ -230,6 +252,16 @@ export default class CrowdsourceForm extends React.Component {
 
       // return <EducatorStudentRadio {...settings}></EducatorStudentRadio>;
       return <YesNoRadio {...settings}></YesNoRadio>;
+    } else if (field.type === 'food-project-rating') {
+      const options = {
+        options: field.options
+      };
+
+      const settings = $.extend(true, {}, defaults, options);
+
+      settings.validations = [];
+
+      return <FoodProjectRating {...settings}></FoodProjectRating>;
     }
   }
 
@@ -248,12 +280,16 @@ export default class CrowdsourceForm extends React.Component {
     this.formItemStatus[item] = valid;
 
     Object.keys(this.formItemStatus).forEach((current) => {
-      if (current !== 'PrimaryPhoto') {
+      if (current !== 'PrimaryPhoto' &&
+          current !== 'OPEN_INPUT_SHARE' &&
+          current !== 'OPEN_INPUT_CONNECT_TWITTER' &&
+          current !== 'FOOD_PROJECT_SCORE' &&
+          current !== 'FOOD_PROJECT_TOOK_PART') {
 
         if (!this.formItemStatus[current]) {
           formValid = false;
         }
-        
+
       }
     });
 

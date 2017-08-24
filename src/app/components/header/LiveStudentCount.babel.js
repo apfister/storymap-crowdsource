@@ -1,5 +1,6 @@
 import React from 'react';
 import esriRequest from 'esri/request';
+import esriConfig from 'esri/config';
 import viewerText from 'i18n!translations/viewer/nls/template';
 
 export const LiveStudentCount = class LiveStudentCount extends React.Component {
@@ -10,6 +11,8 @@ export const LiveStudentCount = class LiveStudentCount extends React.Component {
     window.updateLiveRatio = function () {
 
       const url = this.props.summaryUrl + '/query';
+
+      esriConfig.defaults.io.corsEnabledServers.push('services8.arcgis.com');
 
       const outStatistics = [
         { onStatisticField: 'EDUCATOR_NUM_STUDENTS', statisticType: 'sum', outStatisticFieldName: 'EDUCATOR_NUM_STUDENTS_SUM'},
@@ -46,6 +49,8 @@ export const LiveStudentCount = class LiveStudentCount extends React.Component {
 
   render() {
 
+    const vt = viewerText;
+    
     const livingArchiveText = viewerText.livingArchive;
 
     let studentParticipantText = 'Students participating';
