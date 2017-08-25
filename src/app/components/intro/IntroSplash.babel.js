@@ -28,12 +28,22 @@ export const IntroSplash = class IntroSplash extends React.Component {
 
     const pledgeUrl = this.props.pledgeUrl;
 
+    let foodText = this.props.foodText;
+
+    let foodUrl = this.props.foodUrl;
+
     if (livingArchiveText) {
       title = livingArchiveText.intro.title;
       subTitle = livingArchiveText.intro.subtitle;
       exploreText = livingArchiveText.intro.explore;
       pledgeText = livingArchiveText.intro.pledgeText;
+      foodText = livingArchiveText.intro.foodText;
+      foodUrl = livingArchiveText.intro.foodUrl;
     }
+
+    const foodBtnClass = 'participate btn btn-primary nav-btn';
+
+    const pledgeBtnClass = 'pledge btn btn-info nav-btn';
 
     const introClass = Helper.classnames([this.props.className, 'splash', {
       editing: this.props.editingAllowed
@@ -79,9 +89,13 @@ export const IntroSplash = class IntroSplash extends React.Component {
             className="background-edit-button btn btn-primary btn-lg"
             dangerouslySetInnerHTML={{__html: getIcon('edit')}}></button>
         ) : null}
-        <div className={(isMobile) ? 'food-overlay-mobile' : 'food-overlay'} onClick={() => this.foodClick(pledgeUrl) } >
-          <div className="food-overlay-txt">{pledgeText} </div>
-          <img src={foodOverlayImg}/>
+        <div className={(isMobile) ? 'intro-overlay-mobile' : 'intro-overlay'}>
+          <div className="food-overlay">
+            <button className={foodBtnClass} onClick={() => this.introBtnClick(foodUrl) }>{foodText}</button>
+          </div>
+          <div className="fearless-overlay">
+            <button className={pledgeBtnClass} onClick={() => this.introBtnClick(pledgeUrl) }>{pledgeText}</button>
+          </div>
         </div>
         {background}
         <InlineEditorWrapper
@@ -103,7 +117,7 @@ export const IntroSplash = class IntroSplash extends React.Component {
 
   }
 
-  foodClick(url) {
+  introBtnClick(url) {
     window.open(url);
   }
 

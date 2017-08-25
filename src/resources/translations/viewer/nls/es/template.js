@@ -199,10 +199,19 @@ define({
       "title": "La Lección más grande del mundo",
       "subtitle": "Póngase en el mapa y convertirse en parte de la historia uniendo a una generación para cambiar el mundo en 2030",
       "explore": "Explora el mapa",
-      "pledgeText" : "Tome la promesa de ser \"Be Fearless Be Kind\""
+      "pledgeText" : "Be Fearless Be Kind - Más información",
+      "foodText": "2017 Global Goals Food Project - saber más"
     },
     "form": {
-      "title": "Mettez la plus grande leçon de votre monde sur la carte"
+      "title": "Mettez la plus grande leçon de votre monde sur la carte",
+      "flipGridPreText": "Pour partager un téléchargement vidéo à notre",
+      "flipGridLinkText": "la page Facebook",
+      "fields": {
+        "PrimaryPhoto": {
+          "label": "Foto de tu lección",
+          "placeholder": "Arrastrar y soltar"
+        }
+      }
     }
   }
 });

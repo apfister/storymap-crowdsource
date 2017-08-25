@@ -46,7 +46,7 @@
 
       // wll org site
       appid: "065461d6f4854aa6a19fa1829465e3b2",
-      
+
 			// Optionally to be able to use the appid URL parameter, configure here the list of application author
 			//  whose application are allowed to be viewed by this Crowdsource deployment
 			// This is the Portal username of the Crowdsource owner (e.g. ["user1"] or ["user1", "user2"])
@@ -133,7 +133,14 @@
 
     .participate.btn {
       background-color: #f49600;
-      border-color: orange;
+      border-color: white;
+      color: white;
+    }
+
+    .pledge.btn {
+      background-color: #0072bc;
+      border-color: white;
+      color: white;
     }
 
     .snapshot-generator {
@@ -153,7 +160,7 @@
       color: #3e3d3e;
     }
 
-    .food-overlay {
+    .intro-overlay {
       position: absolute;
       right: 60px;
       bottom: 50px;
@@ -161,25 +168,27 @@
       cursor: pointer;
       text-align: center;
     }
-    .food-overlay-txt {
-      background-color: rgba(229, 229, 229, 0.85);
+    .food-overlay {
       padding: 10px;
-      border-radius: 10px;
-      margin-bottom: 5px;
-      font-weight: bold;
     }
 
-    .food-overlay img {
-      height: 167px;
+    .fearless-overlay  {
+      padding: 10px;
+    }
+
+    .food-overlay img,
+    .fearless-overlay img {
+      /*height: 167px;*/
+      width: 145px;
       cursor: pointer;
-      background-color: rgba(229, 229, 229, 0.85);
-      padding: 10px;
-      border-radius: 10px;
+      /*background-color: rgba(229, 229, 229, 0.85);*/
+      /*padding: 10px;*/
+      /*border-radius: 10px;
       margin-bottom: 5px;
-      font-weight: bold;
+      font-weight: bold;*/
     }
 
-    .food-overlay-mobile img {
+    .intro-overlay-mobile img {
       position: absolute;
       right: 20px;
       bottom: 150px;
@@ -188,7 +197,7 @@
       border-radius: 10px;
     }
 
-    .food-overlay:hover {
+    /*.fearless-overlay:hover {
       cursor: pointer;
       -webkit-border-radius: 10px;
       -moz-border-radius: 10px;
@@ -196,7 +205,7 @@
       -webkit-box-shadow: 0px 0px 30px 0px rgba(255, 255, 255, 0.67);
       -moz-box-shadow:    0px 0px 30px 0px rgba(255, 255, 255, 0.67);
       box-shadow:         0px 0px 30px 0px rgba(255, 255, 255, 0.67);
-    }
+    }*/
 	</style>
 
   <script type="text/javascript">

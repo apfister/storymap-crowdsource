@@ -235,8 +235,14 @@ export default class CrowdsourceForm extends React.Component {
         placeholder: fieldPlaceholder
       };
 
-      // const settings = $.extend(true,{},defaults,options);
-      const settings = $.extend(true,{},defaults,options, {showShareFlipGrid: field.showShareFlipGrid});
+      const extraFlipGrid = {
+        showShareFlipGrid: field.showShareFlipGrid,
+        flipGridPreText: field.flipGridPreText,
+        flipGridLinkText: field.flipGridLinkText,
+        flipGridShareUrl: field.flipGridShareUrl
+      };
+
+      const settings = $.extend(true,{},defaults,options, extraFlipGrid);
 
       settings.validations = [];
 

@@ -53,6 +53,21 @@ export default class Photo extends FormGroup {
       'alert-info': this.state.dragging
     }]);
 
+    let showShareFlipGrid = this.props.showShareFlipGrid;
+
+    let flipGridPreText = this.props.flipGridPreText;
+
+    let flipGridLinkText = this.props.flipGridLinkText;
+
+    let flipGridShareUrl = this.props.flipGridShareUrl;
+
+    const livingArchiveNls = ViewerText.livingArchive;
+
+    if (livingArchiveNls) {
+      flipGridPreText = livingArchiveNls.form.flipGridPreText;
+      flipGridLinkText = livingArchiveNls.form.flipGridLinkText;
+    }
+
     const fileUploader = (
         <div>
         {!this.isMobileDevice && 'draggable' in document.createElement('span') && typeof(window.FileReader) !== 'undefined' ? (
@@ -79,7 +94,7 @@ export default class Photo extends FormGroup {
           </p>
         ) : null }
         { this.props.showShareFlipGrid ? (
-          <p>To share your voice in video go to our <a href="https://flipgrid.com/globalvoice" target="_blank">flipgrid</a></p>
+          <p>{flipGridPreText} <a href={flipGridShareUrl} target="_blank">{flipGridLinkText}</a></p>
         )
           : null }
       </div>

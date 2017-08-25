@@ -199,10 +199,13 @@ define({
       "title": "Archives de la vie de la leçon les plus importantes au monde",
       "subtitle": "Mettez-vous sur la carte et faites partie de l'histoire réunissant une génération pour changer le monde d'ici 2030",
       "explore": "Explorez la carte",
-      "pledgeText" : "Prenez le gage \"Soyez sans peur Être gentil\""
+      "pledgeText" : "Soyez Fearless Be Kind - découvrez plus",
+      "foodText" : "Projet alimentaire 2017 Global Goals - en savoir plus"
     },
     "form": {
       "title": "Pon tu lección más grande del mundo en el mapa",
+      "flipGridPreText": "Pour partager un téléchargement vidéo à notre",
+      "flipGridLinkText": "la page Facebook",
       "fields": {
         "PrimaryPhoto": {
           "label": "Photo de votre leçon",
