@@ -58,4 +58,17 @@
       height: calc(100% -  44px);
     }
   }
+
+  .selected-field-label-holder {
+    margin-bottom: 10px;
+  }
+
+  .selected-field-label {
+    font-size: smaller;
+    margin-bottom: 2px;color: rgba(102, 102, 102, 0.6);
+  }
+
+  .food-score-img {
+    height: 50px;
+  }
 }

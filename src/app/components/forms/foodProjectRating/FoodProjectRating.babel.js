@@ -39,13 +39,13 @@ export default class FoodProjectRating extends FormGroup {
   }
 
   onChange(e) {
-    // this.input.value = e.target.value;
+    this.input.value = parseInt(e.target.value);
 
     const selectedValue = e.target.value;
 
     const name = e.target.name;
 
-    console.log(name, selectedValue);
+    // console.log(name, selectedValue);
 
     super.onChange();
   }

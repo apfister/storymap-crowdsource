@@ -102,6 +102,7 @@ export default class RadioInput extends FormGroup {
               <option value="Youth Group Leader">Youth Group Leader</option>
               <option value="Young Person (Peer Educator)">Young Person (Peer Educator)</option>
               <option value="Civil Society Volunteer">Civil Society Volunteer</option>
+              <option value="Business Employee Volunteer">Business Employee Volunteer</option>
               <option value="Other">Other</option>
             </select>
             <br />

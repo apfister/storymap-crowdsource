@@ -123,7 +123,7 @@
 		}
 
     /* override for bg image. push it down a little bit*/
-    .background-image.lazy-image.loaded {
+    .splash .background-image.lazy-image.loaded {
       background-position-y: 55px !important;
     }
 
@@ -206,6 +206,10 @@
       -moz-box-shadow:    0px 0px 30px 0px rgba(255, 255, 255, 0.67);
       box-shadow:         0px 0px 30px 0px rgba(255, 255, 255, 0.67);
     }*/
+
+    .media-section .media-photo {
+
+    }
 	</style>
 
   <script type="text/javascript">

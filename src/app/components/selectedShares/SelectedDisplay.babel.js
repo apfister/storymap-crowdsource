@@ -162,47 +162,83 @@ export default class SelectedShares extends React.Component {
 
   getFieldLayout(attributes,current) {
 
-      if (typeof current === 'string') {
-        const fieldClasses = Helper.classnames(['field-display', 'field-' + current]);
-        const fieldProps = this.props.fields[current];
+    if (typeof current === 'string') {
 
-        if (fieldProps && (fieldProps.type === 'textarea' || fieldProps.type === 'text') ) {
-
-          if (current === 'OPEN_INPUT_CONNECT_TWITTER') {
-            let txt = attributes[current];
-
-            if (txt && txt !== '') {
-              txt = `<p style="font-size:smaller;margin-bottom: 2px;color: rgba(102, 102, 102, 0.6);">Connect with us on Twitter</p> ${txt}`;
-            }
-
-            return (<Autolinker key={current} className={fieldClasses} text={txt}></Autolinker>);
-
-          } else if (current === 'OPEN_INPUT_SHARE') {
-            let txt = attributes[current];
-
-            if (txt && txt !== '') {
-              txt = `<p style="font-size:smaller;margin-bottom: 2px;color: rgba(102, 102, 102, 0.6);">I'd like to share</p> ${txt}`;
-            }
-
-            return (<Autolinker key={current} className={fieldClasses} text={txt}></Autolinker>);
-
-          }
-
-          return (<Autolinker key={current} className={fieldClasses} text={attributes[current]}></Autolinker>);
-        } else {
-          if (current === 'LESSON_SDG_GOAL') {
-            let txt = attributes[current];
-
-            if (txt && txt !== '') {
-              txt = `<p style="font-size:smaller;margin-bottom: 2px;color: rgba(102, 102, 102, 0.6);">Our Lesson was about</p> ${txt}`;
-            }
-
-            return (<Autolinker key={current} className={fieldClasses} text={txt}></Autolinker>);
-          }
-
-          return (<p key={current} className={fieldClasses}>{attributes[current]}</p>);
-        }
+      if (attributes[current] === null || attributes[current] === undefined) {
+        return null;
       }
+
+      const fieldClasses = Helper.classnames(['field-display', 'field-' + current]);
+
+      let fieldProps = this.props.fields[current];
+
+      if (!fieldProps) {
+        let lbl = '';
+
+        if (current === 'EDUCATOR_ROLE') {
+          lbl = 'What is your role as an Educator?';
+        } else if (current === 'EDUCATOR_NUM_STUDENTS') {
+          lbl = 'How many students have you shared the Goals with?';
+        } else if (current === 'EDUCATOR_CLASS_AGE_RANGE') {
+          lbl = 'What is the Age Range for Your Class?';
+        } else if (current === 'STUDENT_INDIVIDUAL_CLASS') {
+          lbl = 'Are you representing a yourself or a class?';
+        } else if (current === 'STUDENT_INDIVIDUAL_CLASS') {
+          lbl = 'Are you representing a yourself or a class?';
+        } else if (current === 'STUDENT_CLASS_NUMBER') {
+          lbl = 'How many are in your class?';
+        } else if (current === 'STUDENT_AGE_RANGE') {
+          lbl = 'What is Your Age Range?';
+        }
+
+        fieldProps = {
+          label: lbl
+        };
+      }
+
+      const fieldLabel = fieldProps.label;
+
+      let fieldValue = attributes[current];
+
+      if (current === 'OPEN_INPUT_CONNECT_TWITTER') {
+        return (
+          <div className="selected-field-label-holder" key={current}>
+            <p className="selected-field-label">{fieldLabel}</p>
+            <Autolinker className={fieldClasses} text={fieldValue}></Autolinker>
+          </div>
+        );
+      } else if (current === 'FOOD_PROJECT_SCORE') {
+
+        const foodIds = {
+          1: 'c3c997c7e8ed4e188147c62dfdbc2897',
+          2: '58725b7391914c90a19d92988013e8c8',
+          3: 'c3a124eb569e4b3b9079bd847e5dc982',
+          4: 'c7e6ac7a55704c3fa53a079da7841d1a',
+          5: 'b19223ad2525469cb33b065ecfc49e8d'
+        };
+
+        const val = parseInt(attributes[current]);
+
+        const foodId = foodIds[val];
+
+        const foodImgUrl = `//theworldslesson.maps.arcgis.com/sharing/rest/content/items/${foodId}/data`;
+
+        return (
+          <div className="selected-field-label-holder" key={current}>
+            <p className="selected-field-label">{fieldLabel}</p>
+            <img className="food-score-img" src={foodImgUrl} />
+          </div>
+        );
+      } else {
+        return (
+          <div className="selected-field-label-holder" key={current}>
+            <p className="selected-field-label">{fieldLabel}</p>
+            <span className={fieldClasses}>{fieldValue}</span>
+          </div>
+        );
+      }
+
+    }
   }
 
 }
