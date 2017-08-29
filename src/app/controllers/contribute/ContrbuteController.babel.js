@@ -65,6 +65,11 @@ export default class ContributeController {
 
       const eduOrStudent = graphic.attributes.EDUCATOR_STUDENT;
 
+      // i don't know React, and i just don't have time. sorry.
+      const thanksValue = $('#THANKS').val();
+
+      graphic.attributes.THANKS = thanksValue;
+
       if (eduOrStudent === 'Educator') {
         const educatorRole = $('#selEduRole').find(':selected').val();
 

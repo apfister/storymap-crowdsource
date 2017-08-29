@@ -31,7 +31,6 @@ export default class DynamicSelect extends FormGroup {
 
   componentDidMount() {
     super.componentDidMount();
-    window.ts = this.input;
 
     // const url = 'http://www.arcgis.com/sharing/rest/content/items/b79ec01b48f843f6bdb80bc987e70413/data';
     const url = this.props.loadUrl || '//www.arcgis.com/sharing/rest/content/items/b79ec01b48f843f6bdb80bc987e70413/data';
@@ -43,6 +42,10 @@ export default class DynamicSelect extends FormGroup {
         remoteData: data.options
       });
     });
+  }
+
+  onChange(e) {
+    this.input.value = e.target.value;
   }
 
   render() {
@@ -70,7 +73,7 @@ export default class DynamicSelect extends FormGroup {
               if (typeof option === 'string') {
                 return <option key={option} value={option}>{option}</option>;
               } else if (typeof option === 'object' && option.value !== undefined && option.label !== undefined) {
-                return <option key={option.value} value={option.value}>{option.label}</option>;
+                return <option key={option.value} value={option.value} selected={option.selected}>{option.label}</option>;
               } else {
                 _onError('Each option must be either a string or a object containing the keys "value" and "label."');
               }
