@@ -5,6 +5,7 @@ import Loader from 'babel/components/helper/loading/Loader';
 import LazyImage from 'babel/components/helper/lazyImage/LazyImage';
 import InlineEditorWrapper from 'babel/components/forms/inlineEditor/InlineEditorWrapper';
 import builderText from 'mode!isBuilder?i18n!translations/builder/nls/template';
+import LanguageSwitcher from 'babel/components/header/LanguageSwitcher';
 import viewerText from 'i18n!translations/viewer/nls/template';
 
 const ReactCSSTransitionGroup = React.addons.CSSTransitionGroup;
@@ -107,6 +108,7 @@ export const IntroSplash = class IntroSplash extends React.Component {
           {/* <h1 className="title inline-editable" inlineEditConfig={this.getEditConfig('title')}>{this.props.title}</h1> */}
           <h1 className="title inline-editable" inlineEditConfig={this.getEditConfig('title')}>{title}</h1>
           { this.props.editingAllowed || (this.props.subtitle && typeof this.props.subtitle === 'string' && this.props.subtitle.length > 0) ? <h2 className="subtitle serif-face inline-editable" inlineEditConfig={this.getEditConfig('subtitle')}>{subTitle}</h2> : null }
+          <LanguageSwitcher supportedLanguages={this.props.supportedLanguages}></LanguageSwitcher>
         </InlineEditorWrapper>
         <ReactCSSTransitionGroup component="div" className="action-buttons" transitionName="wait-for-action" transitionEnterTimeout={1000} transitionLeaveTimeout={1000} >
           {loader}

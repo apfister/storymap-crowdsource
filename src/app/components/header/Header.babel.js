@@ -8,6 +8,9 @@ import ShareButtonPane from 'babel/components/helper/sharing/ShareButtonPane';
 import builderText from 'mode!isBuilder?i18n!translations/builder/nls/template';
 import viewerText from 'i18n!translations/viewer/nls/template';
 
+// import Select from 'lib/react-select/dist/react-select';
+// import 'lib/react-select/dist/react-select.css';
+
 import 'bootstrap/tooltip';
 import 'bootstrap/transition';
 

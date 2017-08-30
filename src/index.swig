@@ -24,6 +24,9 @@
   <!-- <script src="https://use.fontawesome.com/431a8f4589.js"></script> -->
   <link type="text/css" rel="stylesheet" href="resources/fonts/wll-living-archive/styles.css" />
 
+
+<link rel="stylesheet" href="https://unpkg.com/react-select/dist/react-select.css">
+
   <title></title>
   <meta name="description" content="">
 
