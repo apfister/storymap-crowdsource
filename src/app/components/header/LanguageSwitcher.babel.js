@@ -23,18 +23,13 @@ export const LanguageSwitcher = class LanguageSwitcher extends React.Component {
   }
 
   render() {
-    // const languages = [
-    //   {code: 'en', label: 'English'},
-    //   {code: 'es', label: 'Espanol'},
-    //   {code: 'fr', label: 'Francias'}
-    // ];
 
     const languages = this.props.supportedLanguages;
 
     if (languages &&
         languages.length === 1 &&
         languages[0].code === 'en') {
-          
+
       return null;
     }
 

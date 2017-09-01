@@ -170,33 +170,32 @@ export default class SelectedShares extends React.Component {
 
       const fieldClasses = Helper.classnames(['field-display', 'field-' + current]);
 
-      let fieldProps = this.props.fields[current];
+      const livingArchiveNls = viewerText.livingArchive;
 
-      if (!fieldProps) {
-        let lbl = '';
+      let fieldLabel = current;
 
-        if (current === 'EDUCATOR_ROLE') {
-          lbl = 'What is your role as an Educator?';
-        } else if (current === 'EDUCATOR_NUM_STUDENTS') {
-          lbl = 'How many students have you shared the Goals with?';
-        } else if (current === 'EDUCATOR_CLASS_AGE_RANGE') {
-          lbl = 'What is the Age Range for Your Class?';
-        } else if (current === 'STUDENT_INDIVIDUAL_CLASS') {
-          lbl = 'Are you representing a yourself or a class?';
-        } else if (current === 'STUDENT_INDIVIDUAL_CLASS') {
-          lbl = 'Are you representing a yourself or a class?';
-        } else if (current === 'STUDENT_CLASS_NUMBER') {
-          lbl = 'How many are in your class?';
-        } else if (current === 'STUDENT_AGE_RANGE') {
-          lbl = 'What is Your Age Range?';
-        }
+      if (current === 'EDUCATOR_ROLE' ||
+          current === 'EDUCATOR_NUM_STUDENTS' ||
+          current === 'EDUCATOR_CLASS_AGE_RANGE' ||
+          current === 'EDUCATOR_CLASS_AGE_RANGE' ||
+          current === 'STUDENT_INDIVIDUAL_CLASS') {
 
-        fieldProps = {
-          label: lbl
-        };
+        fieldLabel = this.props.fields.EDUCATOR_STUDENT.subOptions[current].label;
+      } else {
+        fieldLabel = this.props.fields[current].label;
       }
 
-      const fieldLabel = fieldProps.label;
+      if (livingArchiveNls) {
+        try {
+          const f = livingArchiveNls.form.fields[current];
+
+          if (f && f.label) {
+            fieldLabel = f.label;
+          }
+        } catch (e) {
+          console.log(e);
+        }
+      }
 
       let fieldValue = attributes[current];
 

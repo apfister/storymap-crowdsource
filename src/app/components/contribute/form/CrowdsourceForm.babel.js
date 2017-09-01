@@ -45,11 +45,28 @@ export default class CrowdsourceForm extends React.Component {
   }
 
   render() {
+
+    const livingArchiveNls = ViewerText.livingArchive;
+
+    let terms = this.props.termsAndConditions;
+
+    let formTitle = this.props.title;
+
+    if (livingArchiveNls) {
+      try {
+        formTitle = livingArchiveNls.form.title;
+        terms = livingArchiveNls.contribute.termsAndConditions;
+      } catch (e) {
+        formTitle = this.props.title;
+        terms = this.props.termsAndConditions;
+      }
+    }
+
     const termsOptions = {
       formId: this._formId,
       id: 'termsAndCondtions',
       label: ViewerText.contribute.form.termsAndConditions.label,
-      terms: this.props.termsAndConditions,
+      terms: terms,
       inputAttr: {
         type: 'checkbox'
       }
@@ -60,14 +77,6 @@ export default class CrowdsourceForm extends React.Component {
     });
 
     const closeBtnClasses = Helper.classnames(['btn','btn-primary','btn-block','close-btn']);
-
-    const livingArchiveNls = ViewerText.livingArchive;
-
-    let formTitle = this.props.title;
-
-    if (livingArchiveNls) {
-      formTitle = livingArchiveNls.form.title || this.props.title;
-    }
 
     return (
       <div className="row">
@@ -252,7 +261,7 @@ export default class CrowdsourceForm extends React.Component {
         options: field.options
       };
 
-      const settings = $.extend(true,{},defaults,options);
+      const settings = $.extend(true,{},defaults,options, {subOptions: field.subOptions});
 
       settings.validations = [];
 

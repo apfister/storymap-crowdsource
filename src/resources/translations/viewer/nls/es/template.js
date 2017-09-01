@@ -202,6 +202,9 @@ define({
       "pledgeText" : "Be Fearless Be Kind - Más información",
       "foodText": "2017 Global Goals Food Project - saber más"
     },
+    "contribute": {
+      "termsAndConditions": "Usted garantiza y representa que (1) usted posee todos los derechos, título y propiedad en las fotos para ser compartido hasta este sitio, y otorga a ESRI, la lección más grande del mundo y sus socios y sus contratistas el derecho no exclusivo, , Copiar, almacenar, almacenar, organizar, reproducir, publicar y realizar, redistribuir, retransmitir y retransmitir la foto compartida como parte de este servicio, y (2) compartir fotos y cualquier información geolocacional asociada no Infringir o apropiarse indebidamente de los derechos de propiedad de terceros o derechos de privacidad o publicidad. Se prohíben estrictamente compartir fotografías que puedan considerarse difamatorias, obscenas, pornográficas, excesivamente violentas o para estimular actividades ilegales."
+    },
     "form": {
       "title": "Mettez la plus grande leçon de votre monde sur la carte",
       "flipGridPreText": "Pour partager un téléchargement vidéo à notre",
@@ -210,6 +213,53 @@ define({
         "PrimaryPhoto": {
           "label": "Foto de tu lección",
           "placeholder": "Arrastrar y soltar"
+        },
+        "EDUCATOR_ROLE": {
+          "label": "¿Cuál es su papel como educador?",
+          "options": [
+            {"value": "Professional Educator", "label": "Educador Profesional" },
+            {"value": "Youth Group Leader", "label": "Líder de Grupo Juvenil" },
+            {"value": "Young Person (Peer Educator)", "label": "Young Person (Peer Educator)" },
+            {"value": "Civil Society Volunteer", "label": "Civil Society Volunteer" },
+            {"value": "Business Employee Volunteer" , "label": "Business Employee Volunteer" },
+            {"value": "Other", "label": "Other" }
+          ]
+        },
+        "EDUCATOR_STUDENT": {
+          "label": "¿Es usted un educador o un estudiante?!",
+          "options": [
+            {
+              "value": "Educator",
+              "label": "Educador" //Educator
+            },
+            {
+              "value": "Student",
+              "label": "Estudiante" //Student
+            }
+          ]
+        },
+        "EDUCATOR_NUM_STUDENTS": {
+          "label": "¿Con cuántos estudiantes ha compartido los objetivos?"
+        },
+        "EDUCATOR_CLASS_AGE_RANGE": {
+          "label": "Seleccione su clase Clase de edad"
+        },
+        "STUDENT_INDIVIDUAL_CLASS": {
+          "headerLabel":  "Como estudiante eres tu",
+          "studentClassAgeRangeLabel": "Seleccione su rango de edad",
+          "options": [
+            {
+              "label": "Un individuo",
+              "value": "An Individual"
+            },
+            {
+              "label": "Representar una clase, escuela o grupo de",
+              "value": "Representing a Class, School, or Group of"
+            }
+          ]
+        },
+        "THANKS": {
+          "label": "Gracias a"
         }
       }
     }

@@ -4,6 +4,7 @@ import Helper from 'babel/utils/helper/Helper';
 import IconTooltip from 'babel/components/helper/tooltip/IconTooltip';
 import FormGroup from 'babel/components/forms/base/FormGroup';
 import 'babel/utils/helper/strings/StringUtils';
+import viewerText from 'i18n!translations/viewer/nls/template';
 
 export default class RadioInput extends FormGroup {
 
@@ -45,16 +46,6 @@ export default class RadioInput extends FormGroup {
       }
     }
 
-    console.log(name);
-
-    // if (e.target.name !== 'GENDER') {
-    //   const ratioKeeper = window.ratioKeeper;
-    //
-    //   ratioKeeper[this.props.id] = e.target.value;
-    //
-    //   window.doRatioUpdate();
-    // }
-
     super.onChange();
   }
 
@@ -65,14 +56,54 @@ export default class RadioInput extends FormGroup {
       'has-error': !this.state.isValid
     }]);
 
+    const livingArchiveNls = viewerText.livingArchive;
+
+    let educatorRole = this.props.subOptions.EDUCATOR_ROLE.label;
+
+    let educatorRoleOpts = this.props.subOptions.EDUCATOR_ROLE.options;
+
+    let eduNumStudents = this.props.subOptions.EDUCATOR_NUM_STUDENTS.label;
+
+    let eduClassAgeRange = this.props.subOptions.EDUCATOR_CLASS_AGE_RANGE.label;
+
+    let stuHeaderLabel = this.props.subOptions.STUDENT_INDIVIDUAL_CLASS.headerLabel;
+
+    let stuRepOptions = this.props.subOptions.STUDENT_INDIVIDUAL_CLASS.options;
+
+    let studentClassAgeRangeLabel = this.props.subOptions.STUDENT_INDIVIDUAL_CLASS.studentClassAgeRangeLabel;
+
+    if (livingArchiveNls) {
+      try {
+        educatorRole = livingArchiveNls.form.fields.EDUCATOR_ROLE.label;
+        educatorRoleOpts = livingArchiveNls.form.fields.EDUCATOR_ROLE.options;
+        eduNumStudents = livingArchiveNls.form.fields.EDUCATOR_NUM_STUDENTS.label;
+        eduClassAgeRange = livingArchiveNls.form.fields.EDUCATOR_CLASS_AGE_RANGE.label;
+        stuHeaderLabel = livingArchiveNls.form.fields.STUDENT_INDIVIDUAL_CLASS.headerLabel;
+        stuRepOptions = livingArchiveNls.form.fields.STUDENT_INDIVIDUAL_CLASS.options;
+        studentClassAgeRangeLabel = livingArchiveNls.form.fields.STUDENT_INDIVIDUAL_CLASS.studentClassAgeRangeLabel;
+      } catch (e) {
+        console.log(e);
+      }
+    }
+
     return (
       <div className={inputClasses}>
         <label htmlFor={this.props.id} className="control-label">{this.props.label}</label>
         {this.props.tooltip ? <IconTooltip className="form-tooltip" {...this.props.tooltip} /> : null}
           <div className="holder">
-          {this.props.options.map((current) => {
-            // const id = (this.props.id + current.value + '').toCamelCase();
+          {this.props.options.map((current, index) => {
+
             const id = this.props.id + '_' + current.value;
+
+            let lbl = current.label;
+
+            if (livingArchiveNls) {
+              try {
+                lbl = livingArchiveNls.form.fields.EDUCATOR_STUDENT.options[index].label;
+              } catch (e) {
+                lbl = current.label;
+              }
+            }
 
             return (
               <div className="radio yesno-group" key={id}>
@@ -88,7 +119,7 @@ export default class RadioInput extends FormGroup {
 
                     <i className={current.imageClass}></i>
 
-                    <div className="yesno-label">{current.label || current.value}</div>
+                    <div className="yesno-label">{lbl || current.value}</div>
 
                 </label>
               </div>
@@ -96,24 +127,22 @@ export default class RadioInput extends FormGroup {
           })}
           </div>
           <div className="edu-role">
-            <label id="lblEducatorRole" htmlFor="selEduRole">What is Your Role as an Educator?</label>
+            <label id="lblEducatorRole" htmlFor="selEduRole">{educatorRole}</label>
             <select id="selEduRole">
-              <option value="Professional Educator">Professional Educator</option>
-              <option value="Youth Group Leader">Youth Group Leader</option>
-              <option value="Young Person (Peer Educator)">Young Person (Peer Educator)</option>
-              <option value="Civil Society Volunteer">Civil Society Volunteer</option>
-              <option value="Business Employee Volunteer">Business Employee Volunteer</option>
-              <option value="Other">Other</option>
+              { educatorRoleOpts.map( (opt) => {
+                  return <option key={opt.value} value={opt.value}>{opt.label}</option>;
+                })
+              }
             </select>
             <br />
             <div className="edu-num-students">
-              <label id="lblEduNumStudents" htmlFor="txtEduNumStudents">How Many Students Have you Shared the Goals With?</label>
+              <label id="lblEduNumStudents" htmlFor="txtEduNumStudents">{eduNumStudents}</label>
               <br />
               <input id="txtEduNumStudents" placeholder="5" className="form-control" />
             </div>
             <br />
             <div className="edu-class-age-range">
-              <label id="lblSelClassAgeRange">Select Your Class Age Range</label>
+              <label id="lblSelClassAgeRange">{eduClassAgeRange}</label>
               <br />
               <select id="selClassAgeRange">
                 <option value="0 - 11">0 - 11</option>
@@ -123,17 +152,27 @@ export default class RadioInput extends FormGroup {
             </div>
           </div>
           <div className="stu-role">
-            <label id="lblEducatorRole" htmlFor="rdoIndividual">As a Student, are you </label>
+            <label id="lblEducatorRole" htmlFor="rdoIndividual">{stuHeaderLabel}</label>
             <br />
-            <input id="rdoIndividual" name="studentRepresentingClassSize" type="radio" value="Individual" />
-            <label htmlFor="rdoIndividual"> An Individual</label>
-            <br />
-            <input id="rdoGroup" name="studentRepresentingClassSize" type="radio" value="Class, School, or Group" />
-            <label htmlFor="rdoGroup"> Representing a Class, School, or Group of</label>
-            <br />
+            {
+              stuRepOptions.map( (opt) => {
+                const inputId = (opt.value === 'An Individual') ? 'rdoIndividual' : 'rdoGroup';
+
+                const lblId = (opt.value === 'An Individual') ? 'lblIndividual' : 'lblGroup';
+
+                return (
+                  <div>
+                    <input key={inputId} id={inputId} name="studentRepresentingClassSize" type="radio" value={opt.value} />
+                    <label key={lblId} htmlFor={inputId}>{opt.label}</label>
+                    <br />
+                  </div>
+                );
+              })
+            }
+
             <input type="text" id="txtStudentRepresentingClassSize" disabled className="form-control" />
             <br />
-            <label> Select Your Age Range</label>
+            <label>{studentClassAgeRangeLabel}</label>
             <br />
             <select id="selStudentClassAgeRange">
               <option value="0 - 11">0 - 11</option>
