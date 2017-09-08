@@ -160,8 +160,12 @@ export default class RadioInput extends FormGroup {
 
                 const lblId = (opt.value === 'An Individual') ? 'lblIndividual' : 'lblGroup';
 
+                const rando = Math.floor(Math.random() * 300) + 1;
+
+                const holderKey = `holder_${rando}`;
+
                 return (
-                  <div>
+                  <div key={holderKey}>
                     <input key={inputId} id={inputId} name="studentRepresentingClassSize" type="radio" value={opt.value} />
                     <label key={lblId} htmlFor={inputId}>{opt.label}</label>
                     <br />

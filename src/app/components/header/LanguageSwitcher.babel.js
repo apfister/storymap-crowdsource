@@ -41,7 +41,7 @@ export const LanguageSwitcher = class LanguageSwitcher extends React.Component {
 
     let locale = 'en';
 
-    let foundLanguage = languages[0];
+    let foundLanguage = {code: 'en', label: 'English'};
 
     if (window.location.search && window.location.search !== '') {
 
@@ -54,7 +54,7 @@ export const LanguageSwitcher = class LanguageSwitcher extends React.Component {
       })[0];
 
       if (!foundLanguage) {
-        foundLanguage = languages[0];
+        foundLanguage = {code: 'en', label: 'English'};
       }
 
     }

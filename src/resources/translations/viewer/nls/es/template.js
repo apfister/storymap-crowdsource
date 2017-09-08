@@ -192,74 +192,180 @@ define({
   "livingArchive": {
     "header": {
       "title": "La Lección más grande del mundo",
-      "studentCount" : "Estudiantes participantes",
-      "becomePart": "Conviértete en parte de la historia"
+      "studentCount": "Participación de estudiantes",
+      "becomePart": "Forme parte de la historia"
     },
     "intro": {
-      "title": "La Lección más grande del mundo",
-      "subtitle": "Póngase en el mapa y convertirse en parte de la historia uniendo a una generación para cambiar el mundo en 2030",
-      "explore": "Explora el mapa",
-      "pledgeText" : "Be Fearless Be Kind - Más información",
-      "foodText": "2017 Global Goals Food Project - saber más"
+      "title": "Archivo vivo de La Lección más grande del mundo",
+      "subtitle": "Sitúese en el mapa y forme parte de la historia de una generación que cambiará el mundo de aquí a 2030",
+      "foodText": "Proyecto sobre alimentación de 2017 para lograr los Objetivos – obtener más información",
+      "pledgeText": "Be Fearless Be Kind – obtener más información",
+      "explore": "Explorar el mapa"
     },
     "contribute": {
-      "termsAndConditions": "Usted garantiza y representa que (1) usted posee todos los derechos, título y propiedad en las fotos para ser compartido hasta este sitio, y otorga a ESRI, la lección más grande del mundo y sus socios y sus contratistas el derecho no exclusivo, , Copiar, almacenar, almacenar, organizar, reproducir, publicar y realizar, redistribuir, retransmitir y retransmitir la foto compartida como parte de este servicio, y (2) compartir fotos y cualquier información geolocacional asociada no Infringir o apropiarse indebidamente de los derechos de propiedad de terceros o derechos de privacidad o publicidad. Se prohíben estrictamente compartir fotografías que puedan considerarse difamatorias, obscenas, pornográficas, excesivamente violentas o para estimular actividades ilegales."
+      "termsAndConditions": "Garantiza 1) que es titular de todos los derechos sobre las fotografías que comparta en este sitio web y cede a ESRI, La Lección más grande del mundo y sus asociados, así como a sus contratistas, en condiciones no exclusivas y de exención de regalías, el derecho de utilizar, copiar, almacenar, copiar en caché, hospedar, reproducir, mostrar o representar públicamente, redistribuir y retransmitir las fotografías que comparta, así como crear obras derivadas de ellas, en el marco de este servicio; y 2) que, al transmitir fotografías y cualquier información asociada sobre geolocalización, se compromete a no vulnerar el derecho a la privacidad ni el derecho de propiedad o de publicidad de terceros. Queda estrictamente prohibido el uso de fotografías que puedan considerarse difamatorias, obscenas, pornográficas, excesivamente violentas, o que promuevan actividades ilícitas."
     },
     "form": {
-      "title": "Mettez la plus grande leçon de votre monde sur la carte",
-      "flipGridPreText": "Pour partager un téléchargement vidéo à notre",
-      "flipGridLinkText": "la page Facebook",
+      "title": "Sitúe en el mapa su Lección más grande del mundo",
       "fields": {
-        "PrimaryPhoto": {
-          "label": "Foto de tu lección",
-          "placeholder": "Arrastrar y soltar"
+        "Foto principal": {
+          "label": "Foto de su Lección",
+          "placeholder": "Arrastrar y soltar",
+          "flipGridPreText": "Para compartir un vídeo, súbalo a nuestra",
+          "flipGridLinkText": "página de Facebook"
         },
-        "EDUCATOR_ROLE": {
-          "label": "¿Cuál es su papel como educador?",
-          "options": [
-            {"value": "Professional Educator", "label": "Educador Profesional" },
-            {"value": "Youth Group Leader", "label": "Líder de Grupo Juvenil" },
-            {"value": "Young Person (Peer Educator)", "label": "Young Person (Peer Educator)" },
-            {"value": "Civil Society Volunteer", "label": "Civil Society Volunteer" },
-            {"value": "Business Employee Volunteer" , "label": "Business Employee Volunteer" },
-            {"value": "Other", "label": "Other" }
-          ]
+        "LocationName": {
+          "label": "Mi ubicación es",
+          "placeholder": "Indique su ubicación"
         },
         "EDUCATOR_STUDENT": {
-          "label": "¿Es usted un educador o un estudiante?!",
-          "options": [
-            {
-              "value": "Educator",
-              "label": "Educador" //Educator
+          "label": "¿Es usted educador o estudiante?",
+          "options": [{
+              "label": "Educador", //Educator
+              "value": "Educator"
             },
             {
-              "value": "Student",
-              "label": "Estudiante" //Student
-            }
-          ]
-        },
-        "EDUCATOR_NUM_STUDENTS": {
-          "label": "¿Con cuántos estudiantes ha compartido los objetivos?"
-        },
-        "EDUCATOR_CLASS_AGE_RANGE": {
-          "label": "Seleccione su clase Clase de edad"
-        },
-        "STUDENT_INDIVIDUAL_CLASS": {
-          "headerLabel":  "Como estudiante eres tu",
-          "studentClassAgeRangeLabel": "Seleccione su rango de edad",
-          "options": [
-            {
-              "label": "Un individuo",
-              "value": "An Individual"
-            },
-            {
-              "label": "Representar una clase, escuela o grupo de",
-              "value": "Representing a Class, School, or Group of"
+              "label": "Estudiante", //Student
+              "value": "Student"
             }
           ]
         },
         "THANKS": {
-          "label": "Gracias a"
+          "label": "Participo en La Lección más grande del mundo gracias a"
+        },
+        "LESSON_SDG_GOAL": {
+          "label": "El tema de nuestra Lección fue",
+          "options": [{
+              "value": "All the Goals",
+              "label": "Todos los Objetivos"
+            },
+            {
+              "value": "Goal 1 - No Poverty",
+              "label": "Objetivo 1 - Fin de la pobreza"
+            },
+            {
+              "value": "Goal 2 - Zero Hunger",
+              "label": "Objetivo 2 - Hambre cero"
+            },
+            {
+              "value": "Goal 3 - Good Health and Well-being",
+              "label": "Objetivo 3 - Salud y bienestar"
+            },
+            {
+              "value": "Goal 4 - Quality Education",
+              "label": "Objetivo 4 - Educación de calidad"
+            },
+            {
+              "value": "Goal 5 - Gender Equality",
+              "label": "Objetivo 5 - Igualdad de género"
+            },
+            {
+              "value": "Goal 6 - Clean Water and Sanitation",
+              "label": "Objetivo 6 - Agua limpia y saneamiento"
+            },
+            {
+              "value": "Goal 7 - Affordable and Clean Energy",
+              "label": "Objetivo 7 - Energía asequible y no contaminante"
+            },
+            {
+              "value": "Goal 8 - Decent Jobs and Economic Growth",
+              "label": "Objetivo 8 - Trabajo decente y crecimiento económico"
+            },
+            {
+              "value": "Goal 9 - Industry, Innovation and Infrastructure",
+              "label": "Objetivo 9 - Industria, innovación e infraestructura"
+            },
+            {
+              "value": "Goal 10 - Reduced Inequalities",
+              "label": "Objetivo 10 - Reducción de las desigualdades"
+            },
+            {
+              "value": "Goal 11 - Sustainable Cities and Communities",
+              "label": "Objetivo 11 - Ciudades y comunidades sostenibles"
+            },
+            {
+              "value": "Goal 12 - Responsible Consumption and Production",
+              "label": "Objetivo 12 - Producción y consumo responsables"
+            },
+            {
+              "value": "Goal 13 - Climate Action",
+              "label": "Objetivo 13 - Acción por el clima"
+            },
+            {
+              "value": "Goal 14 - Life Below Water",
+              "label": "Objetivo 14 - Vida submarina"
+            },
+            {
+              "value": "Goal 15 - Life on Land",
+              "label": "Objetivo 15 - Vida de ecosistemas terrestres"
+            },
+            {
+              "value": "Goal 16 - Peace, Justice, and Strong Institutions",
+              "label": "Objetivo 16 - Paz, justicia e instituciones sólidas"
+            },
+            {
+              "value": "Goal 17 - Partnerships for the Goals",
+              "label": "Objetivo 17 - Alianzas para lograr los Objetivos"
+            }
+          ]
+        },
+        "OPEN_INPUT_SHARE": {
+          "label": "Quisiera compartir",
+          "placeholder": "Comparta algo sobre su Lección: la cita de un alumno, una idea, un resultado, un compromiso…"
+        },
+        "OPEN_INPUT_CONNECT_TWITTER": {
+          "label": "Quisiera conectarme con otros educadores que están enseñando los ODS. Mi nombre de usuario en Twitter es",
+          "placeholder": "@nombredeusuario"
+        },
+        "FOOD_PROJECT_SCORE": {
+          "label": "Participé en el proyecto sobre alimentación de los Objetivos Mundiales y mi puntuación fue de"
+        },
+        "EDUCATOR_ROLE": {
+          "label": "¿Cuál es su perfil como educador?",
+          "options": [{
+              "label": "Educador profesional",
+              "value": "Professional Educator"
+            }, //Professional Educator
+            {
+              "label": "Líder de un grupo de jóvenes",
+              "value": "Youth Group Leader"
+            }, //Youth Group Leader
+            {
+              "label": "Joven educador (educador entre compañeros)",
+              "value": "Young Person (Peer Educator)"
+            }, //Young Person (Peer Educator)
+            {
+              "label": "Voluntario de la sociedad civil",
+              "value": "Civil Society Volunteer"
+            }, //Civil Society Volunteer
+            {
+              "label": "Trabajador de empresa voluntario",
+              "value": "Business Employee Volunteer"
+            }, //Business Employee Volunteer
+            {
+              "label": "Otro",
+              "value": "Other"
+            } //Other
+          ]
+        },
+        "EDUCATOR_NUM_STUDENTS": {
+          "label": "¿Con cuántos estudiantes ha compartido los Objetivos?"
+        },
+        "EDUCATOR_CLASS_AGE_RANGE": {
+          "label": "Seleccione el rango de edad de su clase"
+        },
+        "STUDENT_INDIVIDUAL_CLASS": {
+          "headerLabel": "¿Cuál es su perfil como estudiante?",
+          "studentClassAgeRangeLabel": "Seleccione su rango de edad",
+          "options": [{
+              "label": "Estudiante particular",
+              "value": "An Individual"
+            }, //An Individual
+            {
+              "label": "Representante de una clase, escuela o grupo",
+              "value": "Representing a Class, School, or Group of"
+            } //Representing a Class, School, or Group of
+          ]
         }
       }
     }

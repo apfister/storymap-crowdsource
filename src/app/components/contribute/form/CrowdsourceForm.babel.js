@@ -149,12 +149,15 @@ export default class CrowdsourceForm extends React.Component {
 
     let fieldPlaceholder = field.placeholder;
 
+    let lessonSdgGoalOptions = field.options || [];
+
     const livingArchiveNls = ViewerText.livingArchive;
 
     if (livingArchiveNls) {
       if (livingArchiveNls.form.fields[field.fieldID]) {
           fieldLabel = livingArchiveNls.form.fields[field.fieldID].label;
           fieldPlaceholder = livingArchiveNls.form.fields[field.fieldID].placeholder;
+          lessonSdgGoalOptions = livingArchiveNls.form.fields.LESSON_SDG_GOAL.options;
       }
     }
 
@@ -229,7 +232,12 @@ export default class CrowdsourceForm extends React.Component {
         case 'location':
           return <Location map={this.props.map} locationFromOtherSource={this.state.locationFromOtherSource} {...settings}></Location>;
         case 'select':
-          settings.options = field.options || [];
+
+          if (field.fieldID === 'LESSON_SDG_GOAL') {
+            settings.options = lessonSdgGoalOptions;
+          } else {
+            settings.options = field.options || [];
+          }
 
           return <Select {...settings}></Select>;
         case 'dynamic-select':

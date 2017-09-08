@@ -175,20 +175,20 @@
       padding: 10px;
     }
 
+    .food-overlay button {
+      white-space: inherit !important;
+      max-width: 360px;
+      max-height: 100px;
+    }
+
     .fearless-overlay  {
       padding: 10px;
     }
 
     .food-overlay img,
     .fearless-overlay img {
-      /*height: 167px;*/
       width: 145px;
       cursor: pointer;
-      /*background-color: rgba(229, 229, 229, 0.85);*/
-      /*padding: 10px;*/
-      /*border-radius: 10px;
-      margin-bottom: 5px;
-      font-weight: bold;*/
     }
 
     .intro-overlay-mobile img {
