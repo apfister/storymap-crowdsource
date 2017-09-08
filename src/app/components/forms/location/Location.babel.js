@@ -119,16 +119,16 @@ export default class Location extends FormGroup {
     this.geocoder.on('auto-complete',this.onAutocomplete);
     this.geocoder.on('clear',this.onClear);
     this.geocoder.on('select',this.onSelect);
-    this.geocoder.on('find-results',(response) => {
-      if (response && response.results && response.results.results[0]) {
-        const result = response.results.results[0].name;
-        const location = this.parseResultForGeoPoint(result);
-
-        if (location) {
-          this.reverseGeocode(location,true);
-        }
-      }
-    });
+    // this.geocoder.on('find-results',(response) => {
+    //   if (response && response.results && response.results.results[0]) {
+    //     const result = response.results.results[0].name;
+    //     const location = this.parseResultForGeoPoint(result);
+    //
+    //     if (location) {
+    //       this.reverseGeocode(location,true);
+    //     }
+    //   }
+    // });
     this.geocoderInput.on('blur',this.onBlur);
 
     this.geocoder.startup();
@@ -230,8 +230,9 @@ export default class Location extends FormGroup {
     }
 
     // if (latLong) {
-      this.reverseGeocode(latLong,true);
+      // this.reverseGeocode(latLong,true);
     // } else if (selection.result) {
+    if (selection.result) {
       this.setLocationValue({
         inputVal: this.geocoderInput.val(),
         dataVal: {
@@ -265,7 +266,7 @@ export default class Location extends FormGroup {
 
       window.selectedISO3Digit = selection.result.feature.attributes.Country;
 
-    // }
+    }
     this.validateForm();
   }
 
