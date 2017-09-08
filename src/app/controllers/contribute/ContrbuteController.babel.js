@@ -71,7 +71,11 @@ export default class ContributeController {
       if (window.loginService) {
         graphic.attributes.LOGIN_SERVICE = window.loginService;
       }
-      
+
+      // add in atts for country roll up
+      graphic.attributes.COUNTRY_NAME = window.selectedCountry;
+      graphic.attributes.COUNTRY_ISO3_DIGIT = window.selectedISO3Digit;
+
       const thanksValue = $('#THANKS').val();
 
       graphic.attributes.THANKS = thanksValue;

@@ -185,7 +185,7 @@ export default class Location extends FormGroup {
     );
 
     // ORIGINAL
-    
+
     // return (
     //   <div className={inputClasses}>
     //     <label htmlFor={this.props.id} className="control-label">{this.props.label}</label>
@@ -239,6 +239,32 @@ export default class Location extends FormGroup {
           geometry: selection.result.feature.geometry
         }
       });
+
+      const selC = this.countryStash.filter( (c) => {
+          if (c.ThreeDigitCountryCode === selection.result.feature.attributes.Country) {
+            return true;
+          }
+        }
+      );
+
+      if (selC && selC[0]) {
+        window.selectedCountry = selC[0].CountryName;
+      } else {
+        const name = selection.result.name;
+
+        let countryTry = '';
+
+        try {
+          countryTry = name.substr(name.lastIndexOf(',')+1, name.length).trim();
+        } catch (e) {
+          countryTry = selection.result.feature.attributes.Country;
+        }
+
+        window.selectedCountry = countryTry;
+      }
+
+      window.selectedISO3Digit = selection.result.feature.attributes.Country;
+
     }
     this.validateForm();
   }
