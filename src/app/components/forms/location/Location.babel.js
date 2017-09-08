@@ -37,10 +37,10 @@ export default class Location extends FormGroup {
     this.onClear = this.onClear.bind(this);
     this.onBlur = this.onBlur.bind(this);
 
-    this.geocodeMapPoint = this.geocodeMapPoint.bind(this);
-    this.parseResultForGeoPoint = this.parseResultForGeoPoint.bind(this);
+    // this.geocodeMapPoint = this.geocodeMapPoint.bind(this);
+    // this.parseResultForGeoPoint = this.parseResultForGeoPoint.bind(this);
     this.reverseGeocode = this.reverseGeocode.bind(this);
-    this.setLocationValue = this.setLocationValue.bind(this);
+    // this.setLocationValue = this.setLocationValue.bind(this);
   }
 
   componentDidMount() {
@@ -140,7 +140,7 @@ export default class Location extends FormGroup {
       id: 'crowdsource-contribute-location'
     });
     this.props.map.addLayer(this.locationLayer);
-    this.geocodeClickEvent = this.props.map.on('click',this.geocodeMapPoint);
+    // this.geocodeClickEvent = this.props.map.on('click',this.geocodeMapPoint);
   }
 
   componentDidUpdate() {
@@ -161,7 +161,7 @@ export default class Location extends FormGroup {
     this.geocoder.destroy();
     this.locateButton.destroy();
     this.props.map.removeLayer(this.locationLayer);
-    this.geocodeClickEvent.remove();
+    // this.geocodeClickEvent.remove();
   }
 
   render() {
@@ -229,9 +229,9 @@ export default class Location extends FormGroup {
       this.geocoderInput.val(selection.result.name);
     }
 
-    if (latLong) {
+    // if (latLong) {
       this.reverseGeocode(latLong,true);
-    } else if (selection.result) {
+    // } else if (selection.result) {
       this.setLocationValue({
         inputVal: this.geocoderInput.val(),
         dataVal: {
@@ -265,7 +265,7 @@ export default class Location extends FormGroup {
 
       window.selectedISO3Digit = selection.result.feature.attributes.Country;
 
-    }
+    // }
     this.validateForm();
   }
 
