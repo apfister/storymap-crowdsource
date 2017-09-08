@@ -339,6 +339,9 @@ define({
         "EDUCATOR_CLASS_AGE_RANGE": {
           "label": "Sélectionnez votre tranche d'âge"
         },
+        "STUDENT_AGE_RANGE": {
+          "label": "Sélectionnez votre groupe d'âge"
+        },
         "STUDENT_INDIVIDUAL_CLASS": {
           "headerLabel":  "En tant qu'élève, agissez-vous",
           "studentClassAgeRangeLabel": "Sélectionnez votre tranche d'âge",

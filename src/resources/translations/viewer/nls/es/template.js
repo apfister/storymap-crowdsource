@@ -354,6 +354,9 @@ define({
         "EDUCATOR_CLASS_AGE_RANGE": {
           "label": "Seleccione el rango de edad de su clase"
         },
+        "STUDENT_AGE_RANGE": {
+          "label": "Seleccione su grupo de edad"
+        },
         "STUDENT_INDIVIDUAL_CLASS": {
           "headerLabel": "¿Cuál es su perfil como estudiante?",
           "studentClassAgeRangeLabel": "Seleccione su rango de edad",

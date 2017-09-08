@@ -354,6 +354,9 @@ define({
         "EDUCATOR_CLASS_AGE_RANGE": {
           "label": "حدّد الفئة العمرية لطلاب صفك"
         },
+        "STUDENT_AGE_RANGE": {
+          "label": "حدد الفئة العمرية"
+        },
         "STUDENT_INDIVIDUAL_CLASS": {
           "headerLabel": "بصفتك طالباً، هل أنت",
           "studentClassAgeRangeLabel": "حدد الفئة العمرية الخاصة بك",

@@ -354,6 +354,9 @@ define({
         "EDUCATOR_CLASS_AGE_RANGE": {
           "label": "Выберите возрастную группу вашего класса"
         },
+        "STUDENT_AGE_RANGE": {
+          "label": "Выберите свою возрастную группу"
+        },
         "STUDENT_INDIVIDUAL_CLASS": {
           "headerLabel": "Как ученику, вам",
           "studentClassAgeRangeLabel": "Выберите свою возрастную группу",

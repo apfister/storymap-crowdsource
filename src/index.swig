@@ -175,6 +175,7 @@
       padding: 10px;
     }
 
+    .fearless-overlay button,
     .food-overlay button {
       white-space: inherit !important;
       max-width: 360px;

@@ -174,10 +174,12 @@ export default class SelectedShares extends React.Component {
 
       let fieldLabel = current;
 
+      console.log('current', current);
+
       if (current === 'EDUCATOR_ROLE' ||
           current === 'EDUCATOR_NUM_STUDENTS' ||
           current === 'EDUCATOR_CLASS_AGE_RANGE' ||
-          current === 'EDUCATOR_CLASS_AGE_RANGE' ||
+          current === 'STUDENT_AGE_RANGE' ||
           current === 'STUDENT_INDIVIDUAL_CLASS') {
 
         fieldLabel = this.props.fields.EDUCATOR_STUDENT.subOptions[current].label;

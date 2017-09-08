@@ -354,6 +354,9 @@ define({
         "EDUCATOR_CLASS_AGE_RANGE": {
           "label": "अपनी कक्षा की आयु श्रेणी चुनें"
         },
+        "STUDENT_AGE_RANGE": {
+          "label": "अपने आयु वर्ग का चयन करें"
+        },
         "STUDENT_INDIVIDUAL_CLASS": {
           "headerLabel": "एक छात्र होने के नाते, आप इनमें से कौन हैं",
           "studentClassAgeRangeLabel": "अपनी आयु श्रेणी चुनें",
