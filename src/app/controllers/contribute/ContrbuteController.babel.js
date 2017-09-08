@@ -66,6 +66,12 @@ export default class ContributeController {
       const eduOrStudent = graphic.attributes.EDUCATOR_STUDENT;
 
       // i don't know React, and i just don't have time. sorry.
+
+      // check for and capture login service
+      if (window.loginService) {
+        graphic.attributes.LOGIN_SERVICE = window.loginService;
+      }
+      
       const thanksValue = $('#THANKS').val();
 
       graphic.attributes.THANKS = thanksValue;

@@ -237,6 +237,11 @@ export default class UserController {
   }
 
   finishOAuthLogin(options) {
+    // added to track login provider if possible
+    if (this.pendingLogin.service) {
+      window.loginService = this.pendingLogin.service;
+    }
+    
     const defaults = {
       verifyCredentialsOptions: {}
     };
