@@ -37,10 +37,10 @@ export default class Location extends FormGroup {
     this.onClear = this.onClear.bind(this);
     this.onBlur = this.onBlur.bind(this);
 
-    // this.geocodeMapPoint = this.geocodeMapPoint.bind(this);
-    // this.parseResultForGeoPoint = this.parseResultForGeoPoint.bind(this);
+    this.geocodeMapPoint = this.geocodeMapPoint.bind(this);
+    this.parseResultForGeoPoint = this.parseResultForGeoPoint.bind(this);
     this.reverseGeocode = this.reverseGeocode.bind(this);
-    // this.setLocationValue = this.setLocationValue.bind(this);
+    this.setLocationValue = this.setLocationValue.bind(this);
   }
 
   componentDidMount() {
@@ -60,8 +60,8 @@ export default class Location extends FormGroup {
       map: this.props.map,
       theme: 'calcite-geocoder',
       arcgisGeocoder: {
-        categories: ['Populated Place'],
-        outFields: 'Country'
+        categories: ['Populated Place', 'Postal'],
+        outFields: '*'
       }
     },this.geocoderContainer[0]);
 
@@ -119,16 +119,16 @@ export default class Location extends FormGroup {
     this.geocoder.on('auto-complete',this.onAutocomplete);
     this.geocoder.on('clear',this.onClear);
     this.geocoder.on('select',this.onSelect);
-    // this.geocoder.on('find-results',(response) => {
-    //   if (response && response.results && response.results.results[0]) {
-    //     const result = response.results.results[0].name;
-    //     const location = this.parseResultForGeoPoint(result);
-    //
-    //     if (location) {
-    //       this.reverseGeocode(location,true);
-    //     }
-    //   }
-    // });
+    this.geocoder.on('find-results',(response) => {
+      if (response && response.results && response.results.results[0]) {
+        const result = response.results.results[0].name;
+        const location = this.parseResultForGeoPoint(result);
+
+        if (location) {
+          this.reverseGeocode(location,true);
+        }
+      }
+    });
     this.geocoderInput.on('blur',this.onBlur);
 
     this.geocoder.startup();
@@ -140,7 +140,7 @@ export default class Location extends FormGroup {
       id: 'crowdsource-contribute-location'
     });
     this.props.map.addLayer(this.locationLayer);
-    // this.geocodeClickEvent = this.props.map.on('click',this.geocodeMapPoint);
+    this.geocodeClickEvent = this.props.map.on('click',this.geocodeMapPoint);
   }
 
   componentDidUpdate() {
@@ -161,7 +161,7 @@ export default class Location extends FormGroup {
     this.geocoder.destroy();
     this.locateButton.destroy();
     this.props.map.removeLayer(this.locationLayer);
-    // this.geocodeClickEvent.remove();
+    this.geocodeClickEvent.remove();
   }
 
   render() {
@@ -226,46 +226,49 @@ export default class Location extends FormGroup {
 
     if (!latLong){
       this.locateButton.clear();
-      this.geocoderInput.val(selection.result.name);
+
+      const matchToOnlyCity = this.adjustGeocodeResponse(selection.result.feature.attributes);
+
+      this.geocoderInput.val(matchToOnlyCity);
     }
 
-    // if (latLong) {
-      // this.reverseGeocode(latLong,true);
-    // } else if (selection.result) {
-    if (selection.result) {
-      this.setLocationValue({
-        inputVal: this.geocoderInput.val(),
-        dataVal: {
-          name: selection.result.name,
-          geometry: selection.result.feature.geometry
-        }
-      });
-
-      const selC = this.countryStash.filter( (c) => {
-          if (c.ThreeDigitCountryCode === selection.result.feature.attributes.Country) {
-            return true;
+    if (latLong) {
+      this.reverseGeocode(latLong,true);
+    } else if (selection.result) {
+      if (selection.result) {
+        this.setLocationValue({
+          inputVal: this.geocoderInput.val(),
+          dataVal: {
+            name: selection.result.name,
+            geometry: selection.result.feature.geometry
           }
+        });
+
+        const selC = this.countryStash.filter( (c) => {
+            if (c.ThreeDigitCountryCode === selection.result.feature.attributes.Country) {
+              return true;
+            }
+          }
+        );
+
+        if (selC && selC[0]) {
+          window.selectedCountry = selC[0].CountryName;
+        } else {
+          const name = selection.result.name;
+
+          let countryTry = '';
+
+          try {
+            countryTry = name.substr(name.lastIndexOf(',')+1, name.length).trim();
+          } catch (e) {
+            countryTry = selection.result.feature.attributes.Country;
+          }
+
+          window.selectedCountry = countryTry;
         }
-      );
 
-      if (selC && selC[0]) {
-        window.selectedCountry = selC[0].CountryName;
-      } else {
-        const name = selection.result.name;
-
-        let countryTry = '';
-
-        try {
-          countryTry = name.substr(name.lastIndexOf(',')+1, name.length).trim();
-        } catch (e) {
-          countryTry = selection.result.feature.attributes.Country;
-        }
-
-        window.selectedCountry = countryTry;
+        window.selectedISO3Digit = selection.result.feature.attributes.Country;
       }
-
-      window.selectedISO3Digit = selection.result.feature.attributes.Country;
-
     }
     this.validateForm();
   }
@@ -354,6 +357,46 @@ export default class Location extends FormGroup {
     });
   }
 
+  adjustGeocodeResponse(address) {
+    let matchToOnlyCity = '';
+
+    const city = address.City;
+
+    const region = address.Region;
+
+    const subRegion = address.Subregion;
+
+    const countryCode = address.CountryCode || address.Country;
+
+    const postalCode = address.Postal;
+
+    let components = [];
+
+    if (city && city !== '') {
+      components.push(city);
+    }
+
+    if (subRegion && subRegion !== '') {
+      components.push(subRegion);
+    }
+
+    if (postalCode && postalCode !== '') {
+      components.push(postalCode);
+    }
+
+    matchToOnlyCity = components.join(', ');
+
+    if (region && region !== '') {
+      matchToOnlyCity += ', ' + region;
+    }
+
+    if (countryCode && countryCode !== '') {
+      matchToOnlyCity += ', ' + countryCode;
+    }
+
+    return matchToOnlyCity;
+  }
+
   reverseGeocode(response,setReverseCoords,ignoreShowingMapOnMobile) {
     let point;
 
@@ -379,13 +422,17 @@ export default class Location extends FormGroup {
 
     if (point) {
       this.locator.locationToAddress(point,100, (res) => {
-        if (res.address && res.address.Match_addr) {
-          this.geocoderInput.val(res.address.Match_addr);
+        if (res.address && res.address.CountryCode) {
+
+          const matchToOnlyCity = this.adjustGeocodeResponse(res.address);
+
+          this.geocoderInput.val(matchToOnlyCity);
+
           this.setLocationValue({
             ignoreShowingMapOnMobile,
             inputVal: this.geocoderInput.val(),
             dataVal: {
-              name: res.address.Match_addr,
+              name: matchToOnlyCity,
               geometry: point
             }
           });
