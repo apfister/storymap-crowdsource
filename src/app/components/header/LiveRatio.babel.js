@@ -11,7 +11,7 @@ export const LiveRatio = class LiveRatio extends React.Component {
       const url = 'https://services3.arcgis.com/7pxWboj3YvCWYdcm/arcgis/rest/services/theWorldsLargestLesson/FeatureServer/0/query';
 
       const outStatistics = [
-        { onStatisticField: 'RATIO_MALE', statisticType: 'avg', outStatisticFieldName: 'male'}, 
+        { onStatisticField: 'RATIO_MALE', statisticType: 'avg', outStatisticFieldName: 'male'},
         { onStatisticField: 'RATIO_FEMALE', statisticType: 'avg', outStatisticFieldName: 'female'}
       ];
 
@@ -29,9 +29,9 @@ export const LiveRatio = class LiveRatio extends React.Component {
           if (res && res.features.length > 0) {
             const feature = res.features[0];
 
-            const male = feature.attributes.male;
+            const male = feature.attributes.male.toFixed(0);
 
-            const female = feature.attributes.female;
+            const female = feature.attributes.female.toFixed(0);
 
             this.maleRatio = male;
 
